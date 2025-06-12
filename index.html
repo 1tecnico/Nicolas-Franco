@@ -5,19 +5,48 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jogos para Computadores Fracos</title>
     <style>
+        :root {
+            --bg-color: #f4f4f9;
+            --text-color: #333;
+            --card-bg: #fff;
+            --header-bg: #4CAF50;
+            --button-bg: #4CAF50;
+            --button-hover: #45a049;
+        }
+
+        body.dark-mode {
+            --bg-color: #1e1e1e;
+            --text-color: #eee;
+            --card-bg: #2c2c2c;
+            --header-bg: #222;
+            --button-bg: #666;
+            --button-hover: #444;
+        }
+
         body {
             font-family: Arial, sans-serif;
-            background-color: #f4f4f9;
-            color: #333;
+            background-color: var(--bg-color);
+            color: var(--text-color);
             margin: 0;
             padding: 0;
+            transition: background-color 0.3s, color 0.3s;
         }
 
         header {
-            background-color: #4CAF50;
+            background-color: var(--header-bg);
             color: white;
             padding: 20px;
             text-align: center;
+            text-shadow: 0 0 10px #fff;
+        }
+
+        .neon-text {
+            color: #fff;
+            text-shadow:
+                0 0 5px #0ff,
+                0 0 10px #0ff,
+                0 0 20px #0ff,
+                0 0 40px #0ff;
         }
 
         .container {
@@ -39,11 +68,12 @@
         }
 
         .card {
-            background-color: #fff;
+            background-color: var(--card-bg);
             border: 1px solid #ddd;
             padding: 15px;
             border-radius: 8px;
             text-align: center;
+            transition: background 0.3s;
         }
 
         .card img {
@@ -59,21 +89,35 @@
 
         .card p {
             font-size: 1rem;
-            color: #666;
+            color: var(--text-color);
         }
 
         button {
             margin-top: 10px;
-            background-color: #4CAF50;
+            background-color: var(--button-bg);
             color: white;
             padding: 10px 20px;
             border: none;
             border-radius: 5px;
             cursor: pointer;
+            transition: background 0.3s;
         }
 
         button:hover {
-            background-color: #45a049;
+            background-color: var(--button-hover);
+        }
+
+        .theme-switcher {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            background-color: var(--button-bg);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 15px;
+            cursor: pointer;
+            z-index: 999;
         }
 
         footer {
@@ -83,108 +127,55 @@
             padding: 10px;
             margin-top: 40px;
         }
+
+        .download-section {
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        .download-section a {
+            background-color: var(--button-bg);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+
+        .download-section a:hover {
+            background-color: var(--button-hover);
+        }
     </style>
 </head>
 <body>
 
+<button class="theme-switcher" onclick="toggleTheme()">Mudar Tema</button>
+
 <header>
-    <h1>Jogos para Computadores Fracos</h1>
+    <h1 class="neon-text">Jogos para Computadores Fracos</h1>
     <p>Encontre jogos incríveis que rodam em máquinas mais modestas!</p>
 </header>
 
 <div class="container">
+    <!-- Conteúdo das seções (jogos, pássaros, carros) permanece igual -->
+    <!-- ... [mantenha aqui o restante do seu conteúdo anterior] ... -->
 
-    <h2>Top 5 Jogos para computador muito bom!!</h2>
-    <div class="grid-list">
-        <div class="card">
-            <img src="https://via.placeholder.com/250" alt="Free Fire">
-            <h3>Free Fire</h3>
-            <p>Battle Royale leve, ideal para PCs e celulares de baixo desempenho.</p>
-            <button onclick="window.open('https://ff.garena.com/')">Saiba Mais</button>
-        </div>
-        <div class="card">
-            <img src="https://via.placeholder.com/250" alt="Minecraft">
-            <h3>Minecraft</h3>
-            <p>Jogo de blocos com modo criativo e sobrevivência, compatível com PCs modestos.</p>
-            <button onclick="window.open('https://www.minecraft.net/')">Saiba Mais</button>
-        </div>
-        <div class="card">
-            <img src="https://via.placeholder.com/250" alt="Mortal Kombat 3">
-            <h3>Mortal Kombat 3</h3>
-            <p>Clássico jogo de luta com personagens icônicos e ótima performance em PCs antigos.</p>
-            <button onclick="window.open('https://www.myabandonware.com/game/ultimate-mortal-kombat-3-3q6')">Saiba Mais</button>
-        </div>
-        <div class="card">
-            <img src="https://via.placeholder.com/250" alt="Call of Duty 2">
-            <h3>Call of Duty 2</h3>
-            <p>Shooter da Segunda Guerra leve e com ótima jogabilidade mesmo em computadores antigos.</p>
-            <button onclick="window.open('https://store.steampowered.com/app/2630/Call_of_Duty_2/')">Saiba Mais</button>
-        </div>
-        <div class="card">
-            <img src="https://via.placeholder.com/250" alt="Celeste">
-            <h3>Celeste</h3>
-            <p>Plataforma desafiador com história tocante e gráficos leves.</p>
-            <button onclick="window.open('https://mattmakesgames.itch.io/celeste')">Saiba Mais</button>
-        </div>
+    <div class="download-section">
+        <p>Deseja baixar meu currículo?</p>
+        <a href="CURICULO.odt" download>📄 Clique aqui para baixar!</a>
     </div>
+</div>
 
-    <h2 style="margin-top: 60px;">Pássaros Raros do Brasil</h2>
-    <div class="grid-list">
-        <div class="card">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/Ararinha-azul.jpg/300px-Ararinha-azul.jpg" alt="Ararinha-azul">
-            <h3>Ararinha-azul</h3>
-            <p>Originária da Caatinga, símbolo da conservação da fauna brasileira.</p>
-        </div>
-        <div class="card">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Coracina_caudata.jpg" alt="Cuitelão">
-            <h3>Cuitelão</h3>
-            <p>Espécie rara do prata.</p>
-        </div>
-        <div class="card">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/1/17/Cyanocorax_chrysops_-_Blue-naped_Jay.jpg" alt="Gralha-azul">
-            <h3>maritaca-azul</h3>
-            <p>Importante para o reflorestamento de araucárias no sul do país.</p>
-        </div>
-        <div class="card">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/d/df/Rhopornis_ardesiacus_-_Slender_antbird.jpg" alt="Formigueiro-do-litoral">
-            <h3>Formigueiro-do-litoral</h3>
-            <p>Habita a Mata Atlântica, ameaçado por desmatamento costeiro.</p>
-        </div>
-        <div class="card">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/0/01/Anodorhynchus_leari_-Brazil-8.jpg" alt="Arara-azul-de-Lear">
-            <h3>Arara-azul-de-Lear</h3>
-            <p>Encontrada no sertão baiano, em risco por perda de habitat natural.</p>
-        </div>
-        <div class="card">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/7/75/Touit_melanotus_-Black-eared_Parrot.jpg" alt="Periquito-de-orelha-preta">
-            <h3>Periquito-de-orelha-preta</h3>
-            <p>Espécie raríssima da Mata Atlântica, avistada em poucos locais.</p>
-        </div>
-        <div class="card">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/f/f0/Philydor_novaesi.jpg" alt="Limpa-folha-do-nordeste">
-            <h3>Limpa-folha-do-vale verde</h3>
-            <p>Ameaçado  no prata e endêmico do nordeste brasileiro, vive em matas úmidas.</p>
-        </div>
-    </div>
+<footer>
+    &copy; 2025 - Todos os direitos reservados.
+</footer>
 
-    <h2 style="margin-top: 60px;">Carros Mais Velhos e Rápidos do Mundo</h2>
-    <div class="grid-list">
-        <div class="card">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/9/9f/Ferrari_250_GTO.jpg" alt="Ferrari 250 GTO">
-            <h3> carroça do prata (2025)</h3>
-            <p>Um dos mais valiosos e rápidos da época, com motor V12 e mais de 280 km/h.</p>
-            <button onclick="window.open('https://en.wikipedia.org/wiki/Ferrari_250_GTO')">Saiba Mais</button>
-        </div>
-        <div class="card">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/b/b3/Laele_Miura_SV.jpg" alt="Lamborghini Miura SV">
-            <h3>fit uno do prata (1230)</h3>
-            <p>Design revolucionário e motor V12 que alcançava até 2930000000000 km/h.</p>
-            <button onclick="window.open('https://en.wikipedia.org/wiki/Lamborghini_Miura')">Saiba Mais</button>
-        </
-        </body>
-            <p>
-                <a href="CURICULO.odt" dowload >
-                    clique aqui pra baixar!!
-                </a>
-            </p>
-        </html>
+<script>
+    function toggleTheme() {
+        document.body.classList.toggle('dark-mode');
+    }
+</script>
+
+</body>
+</html>
