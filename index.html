@@ -179,3 +179,142 @@
 
 </body>
 </html>
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Calculadora Brilhante</title>
+  <style>
+    body {
+      background-color: #0f0f0f;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .calculadora {
+      background-color: #1c1c1c;
+      border-radius: 15px;
+      padding: 20px;
+      box-shadow: 0 0 20px #00f7ff88;
+    }
+
+    .tela {
+      background-color: #000;
+      color: #0f0;
+      font-size: 2em;
+      border: none;
+      border-radius: 5px;
+      padding: 10px;
+      width: 100%;
+      text-align: right;
+      margin-bottom: 20px;
+    }
+
+    .botoes {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+    }
+
+    button {
+      font-size: 1.5em;
+      padding: 15px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      color: #fff;
+      background-color: #222;
+      transition: 0.3s;
+      text-shadow: 0 0 8px #00f7ff;
+      box-shadow: 0 0 5px #00f7ff;
+    }
+
+    button:hover {
+      background-color: #00f7ff;
+      color: #000;
+      text-shadow: none;
+      box-shadow: 0 0 15px #00f7ff, 0 0 25px #00f7ff;
+    }
+
+    .operador {
+      background-color: #333;
+      color: #ff4081;
+      text-shadow: 0 0 8px #ff4081;
+      box-shadow: 0 0 5px #ff4081;
+    }
+
+    .operador:hover {
+      background-color: #ff4081;
+      color: #000;
+      box-shadow: 0 0 15px #ff4081, 0 0 25px #ff4081;
+    }
+
+    .igual {
+      background-color: #28a745;
+      text-shadow: 0 0 8px #28a745;
+      box-shadow: 0 0 5px #28a745;
+      grid-column: span 2;
+    }
+
+    .igual:hover {
+      background-color: #7dfc8b;
+      color: #000;
+      box-shadow: 0 0 15px #7dfc8b, 0 0 25px #7dfc8b;
+    }
+  </style>
+</head>
+<body>
+  <div class="calculadora">
+    <input type="text" class="tela" id="display" disabled />
+    <div class="botoes">
+      <button onclick="add('7')">7</button>
+      <button onclick="add('8')">8</button>
+      <button onclick="add('9')">9</button>
+      <button class="operador" onclick="add('/')">÷</button>
+
+      <button onclick="add('4')">4</button>
+      <button onclick="add('5')">5</button>
+      <button onclick="add('6')">6</button>
+      <button class="operador" onclick="add('*')">×</button>
+
+      <button onclick="add('1')">1</button>
+      <button onclick="add('2')">2</button>
+      <button onclick="add('3')">3</button>
+      <button class="operador" onclick="add('-')">−</button>
+
+      <button onclick="add('0')">0</button>
+      <button onclick="add('.')">.</button>
+      <button class="igual" onclick="calcular()">=</button>
+      <button class="operador" onclick="add('+')">+</button>
+
+      <button class="operador" onclick="limpar()">C</button>
+    </div>
+  </div>
+
+  <script>
+    const display = document.getElementById('display');
+
+    function add(valor) {
+      display.value += valor;
+    }
+
+    function limpar() {
+      display.value = '';
+    }
+
+    function calcular() {
+      try {
+        display.value = eval(display.value);
+      } catch (e) {
+        display.value = 'Erro';
+      }
+    }
+  </script>
+</body>
+</html>
+
