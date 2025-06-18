@@ -1,199 +1,86 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jogos para Computadores Fracos</title>
-    <style>
-        :root {
-            --bg-color: #f4f4f9;
-            --text-color: #333;
-            --card-bg: #fff;
-            --header-bg: #4CAF50;
-            --button-bg: #4CAF50;
-            --button-hover: #45a049;
-        }
-
-        body.dark-mode {
-            --bg-color: #1e1e1e;
-            --text-color: #eee;
-            --card-bg: #2c2c2c;
-            --header-bg: #222;
-            --button-bg: #666;
-            --button-hover: #444;
-        }
-
-        body {
-            font-family: Arial, sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            margin: 0;
-            padding: 0;
-            transition: background-color 0.3s, color 0.3s;
-        }
-
-        header {
-            background-color: var(--header-bg);
-            color: white;
-            padding: 20px;
-            text-align: center;
-            text-shadow: 0 0 10px #fff;
-        }
-
-        .neon-text {
-            color: #fff;
-            text-shadow:
-                0 0 5px #0ff,
-                0 0 10px #0ff,
-                0 0 20px #0ff,
-                0 0 40px #0ff;
-        }
-
-        .container {
-            width: 90%;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-
-        h1, h2 {
-            font-size: 2rem;
-        }
-
-        .grid-list {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 20px;
-            margin-top: 20px;
-        }
-
-        .card {
-            background-color: var(--card-bg);
-            border: 1px solid #ddd;
-            padding: 15px;
-            border-radius: 8px;
-            text-align: center;
-            transition: background 0.3s;
-        }
-
-        .card img {
-            width: 100%;
-            height: auto;
-            border-radius: 5px;
-        }
-
-        .card h3 {
-            margin-top: 10px;
-            font-size: 1.5rem;
-        }
-
-        .card p {
-            font-size: 1rem;
-            color: var(--text-color);
-        }
-
-        button {
-            margin-top: 10px;
-            background-color: var(--button-bg);
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background 0.3s;
-        }
-
-        button:hover {
-            background-color: var(--button-hover);
-        }
-
-        .theme-switcher {
-            position: fixed;
-            top: 10px;
-            right: 10px;
-            background-color: var(--button-bg);
-            color: white;
-            border: none;
-            border-radius: 5px;
-            padding: 10px 15px;
-            cursor: pointer;
-            z-index: 999;
-        }
-
-        footer {
-            background-color: #333;
-            color: white;
-            text-align: center;
-            padding: 10px;
-            margin-top: 40px;
-        }
-
-        .download-section {
-            text-align: center;
-            margin-top: 40px;
-        }
-
-        .download-section a {
-            background-color: var(--button-bg);
-            color: white;
-            padding: 10px 20px;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: bold;
-            transition: background 0.3s;
-        }
-
-        .download-section a:hover {
-            background-color: var(--button-hover);
-        }
-    </style>
-</head>
-<body>
-
-<button class="theme-switcher" onclick="toggleTheme()">Mudar Tema</button>
-
-<header>
-    <h1 class="neon-text">Jogos para Computadores Fracos</h1>
-    <p>Encontre jogos incríveis que rodam em máquinas mais modestas!</p>
-</header>
-
-<div class="container">
-    <!-- Conteúdo das seções (jogos, pássaros, carros) permanece igual -->
-    <!-- ... [mantenha aqui o restante do seu conteúdo anterior] ... -->
-
-    <div class="download-section">
-        <p>Deseja baixar meu currículo?</p>
-        <a href="CURICULO.odt" download>📄 Clique aqui para baixar!</a>
-    </div>
-</div>
-
-<footer>
-    &copy; 2025 - Todos os direitos reservados.
-</footer>
-
-<script>
-    function toggleTheme() {
-        document.body.classList.toggle('dark-mode');
-    }
-</script>
-
-</body>
-</html>
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Calculadora Brilhante</title>
+  <title>Meu Site Multitemático</title>
   <style>
+    :root {
+      --bg-color: #f4f4f9;
+      --text-color: #333;
+      --card-bg: #fff;
+      --header-bg: #4CAF50;
+      --button-bg: #4CAF50;
+      --button-hover: #45a049;
+    }
+
+    body.dark-mode {
+      --bg-color: #1e1e1e;
+      --text-color: #eee;
+      --card-bg: #2c2c2c;
+      --header-bg: #222;
+      --button-bg: #666;
+      --button-hover: #444;
+    }
+
     body {
-      background-color: #0f0f0f;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      font-family: Arial, sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      margin: 0;
+      padding: 0;
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    header {
+      background-color: var(--header-bg);
+      color: white;
+      padding: 20px;
+      text-align: center;
+      text-shadow: 0 0 10px #fff;
+    }
+
+    .neon-text {
+      color: #fff;
+      text-shadow: 0 0 5px #0ff, 0 0 10px #0ff, 0 0 20px #0ff;
+    }
+
+    .tabs {
       display: flex;
       justify-content: center;
-      align-items: center;
-      height: 100vh;
-      margin: 0;
+      flex-wrap: wrap;
+      background-color: var(--header-bg);
+    }
+
+    .tabs button {
+      background-color: var(--button-bg);
+      border: none;
+      padding: 15px 20px;
+      cursor: pointer;
+      color: white;
+      font-weight: bold;
+      border-bottom: 3px solid transparent;
+    }
+
+    .tabs button:hover, .tabs button.active {
+      background-color: var(--button-hover);
+      border-bottom: 3px solid yellow;
+    }
+
+    .tab-content {
+      display: none;
+      padding: 20px;
+    }
+
+    .active-content {
+      display: block;
+    }
+
+    .card {
+      background-color: var(--card-bg);
+      padding: 15px;
+      border-radius: 8px;
+      margin: 10px 0;
     }
 
     .calculadora {
@@ -201,6 +88,8 @@
       border-radius: 15px;
       padding: 20px;
       box-shadow: 0 0 20px #00f7ff88;
+      max-width: 300px;
+      margin: auto;
     }
 
     .tela {
@@ -221,7 +110,7 @@
       gap: 10px;
     }
 
-    button {
+    .botoes button {
       font-size: 1.5em;
       padding: 15px;
       border: none;
@@ -229,46 +118,71 @@
       cursor: pointer;
       color: #fff;
       background-color: #222;
-      transition: 0.3s;
       text-shadow: 0 0 8px #00f7ff;
       box-shadow: 0 0 5px #00f7ff;
     }
 
-    button:hover {
-      background-color: #00f7ff;
-      color: #000;
-      text-shadow: none;
-      box-shadow: 0 0 15px #00f7ff, 0 0 25px #00f7ff;
-    }
-
-    .operador {
+    .botoes button.operador {
       background-color: #333;
       color: #ff4081;
       text-shadow: 0 0 8px #ff4081;
-      box-shadow: 0 0 5px #ff4081;
     }
 
-    .operador:hover {
-      background-color: #ff4081;
-      color: #000;
-      box-shadow: 0 0 15px #ff4081, 0 0 25px #ff4081;
-    }
-
-    .igual {
+    .botoes button.igual {
       background-color: #28a745;
-      text-shadow: 0 0 8px #28a745;
-      box-shadow: 0 0 5px #28a745;
       grid-column: span 2;
     }
 
-    .igual:hover {
-      background-color: #7dfc8b;
-      color: #000;
-      box-shadow: 0 0 15px #7dfc8b, 0 0 25px #7dfc8b;
+    footer {
+      background-color: #333;
+      color: white;
+      text-align: center;
+      padding: 10px;
+      margin-top: 40px;
+    }
+
+    .theme-switcher {
+      position: fixed;
+      top: 10px;
+      right: 10px;
+      z-index: 1000;
+      padding: 10px;
+      border: none;
+      background-color: var(--button-bg);
+      color: white;
+      border-radius: 5px;
+      cursor: pointer;
     }
   </style>
 </head>
 <body>
+
+<button class="theme-switcher" onclick="toggleTheme()">🌙 Mudar Tema</button>
+
+<header>
+  <h1 class="neon-text">Portal Multitemático</h1>
+  <p>Um pouco de tudo para todos</p>
+</header>
+
+<div class="tabs">
+  <button class="tab-btn active" onclick="openTab('jogos')">Jogos Fracos</button>
+  <button class="tab-btn" onclick="openTab('calculadora')">Calculadora</button>
+  <button class="tab-btn" onclick="openTab('peixes')">Peixes do Brasil</button>
+  <button class="tab-btn" onclick="openTab('carros')">Carros em MG</button>
+  <button class="tab-btn" onclick="openTab('jogadores')">Piores Jogadores</button>
+</div>
+
+<div class="tab-content active-content" id="jogos">
+  <h2>Jogos para Computadores Fracos</h2>
+  <div class="card">Minecraft (versão antiga, 1.8.9)</div>
+  <div class="card">Undertale</div>
+  <div class="card">Terraria</div>
+  <div class="card">Stardew Valley</div>
+  <div class="card">League of Legends (baixos gráficos)</div>
+</div>
+
+<div class="tab-content" id="calculadora">
+  <h2>Calculadora Brilhante</h2>
   <div class="calculadora">
     <input type="text" class="tela" id="display" disabled />
     <div class="botoes">
@@ -276,45 +190,45 @@
       <button onclick="add('8')">8</button>
       <button onclick="add('9')">9</button>
       <button class="operador" onclick="add('/')">÷</button>
-
       <button onclick="add('4')">4</button>
       <button onclick="add('5')">5</button>
       <button onclick="add('6')">6</button>
       <button class="operador" onclick="add('*')">×</button>
-
       <button onclick="add('1')">1</button>
       <button onclick="add('2')">2</button>
       <button onclick="add('3')">3</button>
       <button class="operador" onclick="add('-')">−</button>
-
       <button onclick="add('0')">0</button>
       <button onclick="add('.')">.</button>
       <button class="igual" onclick="calcular()">=</button>
       <button class="operador" onclick="add('+')">+</button>
-
       <button class="operador" onclick="limpar()">C</button>
     </div>
   </div>
+</div>
 
-  <script>
-    const display = document.getElementById('display');
+<div class="tab-content" id="peixes">
+  <h2>Peixes Mais Comuns do Brasil</h2>
+  <div class="card">Tilápia</div>
+  <div class="card">Tucunaré</div>
+  <div class="card">Piau</div>
+  <div class="card">Lambari</div>
+  <div class="card">Traíra</div>
+</div>
 
-    function add(valor) {
-      display.value += valor;
-    }
+<div class="tab-content" id="carros">
+  <h2>Carros Mais Baratos em Minas Gerais (2025)</h2>
+  <div class="card">Fiat Uno (usado)</div>
+  <div class="card">Volkswagen Gol G4</div>
+  <div class="card">Chevrolet Celta</div>
+  <div class="card">Ford Ka antigo</div>
+  <div class="card">Renault Clio</div>
+</div>
 
-    function limpar() {
-      display.value = '';
-    }
-
-    function calcular() {
-      try {
-        display.value = eval(display.value);
-      } catch (e) {
-        display.value = 'Erro';
-      }
-    }
-  </script>
-</body>
-</html>
-
+<div class="tab-content" id="jogadores">
+  <h2>Piores Jogadores de Futebol (Opiniões Populares)</h2>
+  <div class="card">Lord Bentner</div>
+  <div class="card">André Balada</div>
+  <div class="card">Bolaños (ex-Galo)</div>
+  <div class="card">Sebastián Abreu (pela quantidade de clubes)</div>
+  <div class="card">
