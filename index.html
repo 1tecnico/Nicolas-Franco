@@ -2,8 +2,8 @@
 <html lang="pt-br">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Meu Site Multitemático</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Site Funcional Simples</title>
   <style>
     :root {
       --bg-color: #f4f4f9;
@@ -13,7 +13,6 @@
       --button-bg: #4CAF50;
       --button-hover: #45a049;
     }
-
     body.dark-mode {
       --bg-color: #1e1e1e;
       --text-color: #eee;
@@ -22,76 +21,49 @@
       --button-bg: #666;
       --button-hover: #444;
     }
-
     body {
       font-family: Arial, sans-serif;
       background-color: var(--bg-color);
       color: var(--text-color);
       margin: 0;
-      padding: 0;
+      padding: 20px;
       transition: background-color 0.3s, color 0.3s;
     }
-
     header {
       background-color: var(--header-bg);
       color: white;
       padding: 20px;
       text-align: center;
       text-shadow: 0 0 10px #fff;
+      margin-bottom: 30px;
+      border-radius: 8px;
     }
-
     .neon-text {
       color: #fff;
-      text-shadow: 0 0 5px #0ff, 0 0 10px #0ff, 0 0 20px #0ff;
+      text-shadow:
+        0 0 5px #0ff,
+        0 0 10px #0ff,
+        0 0 20px #0ff;
     }
-
-    .tabs {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      background-color: var(--header-bg);
-    }
-
-    .tabs button {
-      background-color: var(--button-bg);
-      border: none;
-      padding: 15px 20px;
-      cursor: pointer;
-      color: white;
-      font-weight: bold;
-      border-bottom: 3px solid transparent;
-    }
-
-    .tabs button:hover, .tabs button.active {
-      background-color: var(--button-hover);
-      border-bottom: 3px solid yellow;
-    }
-
-    .tab-content {
-      display: none;
-      padding: 20px;
-    }
-
-    .active-content {
-      display: block;
-    }
-
-    .card {
+    .section {
       background-color: var(--card-bg);
       padding: 15px;
       border-radius: 8px;
-      margin: 10px 0;
+      margin-bottom: 30px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
     }
-
+    h2 {
+      margin-top: 0;
+      color: var(--header-bg);
+    }
     .calculadora {
       background-color: #1c1c1c;
       border-radius: 15px;
       padding: 20px;
       box-shadow: 0 0 20px #00f7ff88;
-      max-width: 300px;
-      margin: auto;
+      max-width: 320px;
+      margin: 0 auto;
     }
-
     .tela {
       background-color: #000;
       color: #0f0;
@@ -102,14 +74,13 @@
       width: 100%;
       text-align: right;
       margin-bottom: 20px;
+      user-select: none;
     }
-
     .botoes {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
       gap: 10px;
     }
-
     .botoes button {
       font-size: 1.5em;
       padding: 15px;
@@ -120,27 +91,46 @@
       background-color: #222;
       text-shadow: 0 0 8px #00f7ff;
       box-shadow: 0 0 5px #00f7ff;
+      transition: background-color 0.3s, box-shadow 0.3s;
     }
-
+    .botoes button:hover {
+      background-color: #00f7ff;
+      color: #000;
+      box-shadow: 0 0 15px #00f7ff, 0 0 25px #00f7ff;
+      text-shadow: none;
+    }
     .botoes button.operador {
       background-color: #333;
       color: #ff4081;
       text-shadow: 0 0 8px #ff4081;
+      box-shadow: 0 0 5px #ff4081;
     }
-
+    .botoes button.operador:hover {
+      background-color: #ff4081;
+      color: #000;
+      box-shadow: 0 0 15px #ff4081, 0 0 25px #ff4081;
+      text-shadow: none;
+    }
     .botoes button.igual {
       background-color: #28a745;
       grid-column: span 2;
+      box-shadow: 0 0 5px #28a745;
+      text-shadow: 0 0 8px #28a745;
     }
-
+    .botoes button.igual:hover {
+      background-color: #7dfc8b;
+      color: #000;
+      box-shadow: 0 0 15px #7dfc8b, 0 0 25px #7dfc8b;
+      text-shadow: none;
+    }
     footer {
       background-color: #333;
       color: white;
       text-align: center;
       padding: 10px;
-      margin-top: 40px;
+      border-radius: 8px;
+      margin-top: 30px;
     }
-
     .theme-switcher {
       position: fixed;
       top: 10px;
@@ -152,6 +142,11 @@
       color: white;
       border-radius: 5px;
       cursor: pointer;
+      box-shadow: 0 0 10px var(--button-bg);
+      transition: background-color 0.3s;
+    }
+    .theme-switcher:hover {
+      background-color: var(--button-hover);
     }
   </style>
 </head>
@@ -164,24 +159,50 @@
   <p>Um pouco de tudo para todos</p>
 </header>
 
-<div class="tabs">
-  <button class="tab-btn active" onclick="openTab('jogos')">Jogos Fracos</button>
-  <button class="tab-btn" onclick="openTab('calculadora')">Calculadora</button>
-  <button class="tab-btn" onclick="openTab('peixes')">Peixes do Brasil</button>
-  <button class="tab-btn" onclick="openTab('carros')">Carros em MG</button>
-  <button class="tab-btn" onclick="openTab('jogadores')">Piores Jogadores</button>
-</div>
-
-<div class="tab-content active-content" id="jogos">
+<section class="section">
   <h2>Jogos para Computadores Fracos</h2>
-  <div class="card">Minecraft (versão antiga, 1.8.9)</div>
-  <div class="card">Undertale</div>
-  <div class="card">Terraria</div>
-  <div class="card">Stardew Valley</div>
-  <div class="card">League of Legends (baixos gráficos)</div>
-</div>
+  <ul>
+    <li>Minecraft (versão antiga, 1.8.9)</li>
+    <li>Undertale</li>
+    <li>Terraria</li>
+    <li>Stardew Valley</li>
+    <li>League of Legends (baixos gráficos)</li>
+  </ul>
+</section>
 
-<div class="tab-content" id="calculadora">
+<section class="section">
+  <h2>Peixes Mais Comuns do Brasil</h2>
+  <ul>
+    <li>Tilápia</li>
+    <li>Tucunaré</li>
+    <li>Piau</li>
+    <li>Lambari</li>
+    <li>Traíra</li>
+  </ul>
+</section>
+
+<section class="section">
+  <h2>Carros Mais Baratos em Minas Gerais (2025)</h2>
+  <ul>
+    <li>Fiat Uno (usado)</li>
+    <li>Volkswagen Gol G4</li>
+    <li>Chevrolet Celta</li>
+    <li>Ford Ka antigo</li>
+    <li>Renault Clio</li>
+  </ul>
+</section>
+
+<section class="section">
+  <h2>Piores Jogadores de Futebol (Opiniões Populares)</h2>
+  <ul>
+    <li>Lord Bentner</li>
+    <li>André Balada</li>
+    <li>Bolaños (ex-Galo)</li>
+    <li>Sebastián Abreu (pela quantidade de clubes)</li>
+  </ul>
+</section>
+
+<section class="section">
   <h2>Calculadora Brilhante</h2>
   <div class="calculadora">
     <input type="text" class="tela" id="display" disabled />
@@ -205,30 +226,37 @@
       <button class="operador" onclick="limpar()">C</button>
     </div>
   </div>
-</div>
+</section>
 
-<div class="tab-content" id="peixes">
-  <h2>Peixes Mais Comuns do Brasil</h2>
-  <div class="card">Tilápia</div>
-  <div class="card">Tucunaré</div>
-  <div class="card">Piau</div>
-  <div class="card">Lambari</div>
-  <div class="card">Traíra</div>
-</div>
+<footer>
+  &copy; 2025 - Todos os direitos reservados.
+</footer>
 
-<div class="tab-content" id="carros">
-  <h2>Carros Mais Baratos em Minas Gerais (2025)</h2>
-  <div class="card">Fiat Uno (usado)</div>
-  <div class="card">Volkswagen Gol G4</div>
-  <div class="card">Chevrolet Celta</div>
-  <div class="card">Ford Ka antigo</div>
-  <div class="card">Renault Clio</div>
-</div>
+<script>
+  function toggleTheme() {
+    document.body.classList.toggle('dark-mode');
+  }
 
-<div class="tab-content" id="jogadores">
-  <h2>Piores Jogadores de Futebol (Opiniões Populares)</h2>
-  <div class="card">Lord Bentner</div>
-  <div class="card">André Balada</div>
-  <div class="card">Bolaños (ex-Galo)</div>
-  <div class="card">Sebastián Abreu (pela quantidade de clubes)</div>
-  <div class="card">
+  const display = document.getElementById('display');
+
+  function add(valor) {
+    display.value += valor;
+  }
+
+  function limpar() {
+    display.value = '';
+  }
+
+  function calcular() {
+    try {
+      // Evita eval para segurança; usa Function construtor (melhor que eval)
+      const result = Function('"use strict";return (' + display.value + ')')();
+      display.value = result;
+    } catch {
+      display.value = 'Erro';
+    }
+  }
+</script>
+
+</body>
+</html>
