@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mochila Escolar</title>
+
+<style>
+body {
+    font-family: Arial, sans-serif;
+    background: #f4f6f9;
+    margin: 0;
+    padding: 20px;
+}
+
+h1 {
+    text-align: center;
+}
+
+.container {
+    max-width: 800px;
+    margin: auto;
+}
+
+.form-box {
+    background: white;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+    margin-bottom: 20px;
+}
+
+input, select, button {
+    padding: 8px;
+    margin: 5px 0;
+    width: 100%;
+}
+
+button {
+    background: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #45a049;
+}
+
+.card {
+    background: white;
+    padding: 10px;
+    margin: 10px 0;
+    border-left: 5px solid #4CAF50;
+    border-radius: 5px;
+}
+
+.filtro {
+    margin-bottom: 15px;
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+    <h1>📚 Mochila Escolar</h1>
+
+    <div class="form-box">
+        <h3>Adicionar Disciplina</h3>
+        <input type="text" id="nome" placeholder="Nome da disciplina">
+        
+        <select id="dia">
+            <option value="Segunda">Segunda</option>
+            <option value="Terça">Terça</option>
+            <option value="Quarta">Quarta</option>
+            <option value="Quinta">Quinta</option>
+            <option value="Sexta">Sexta</option>
+        </select>
+
+        <input type="text" id="local" placeholder="Sala / Bloco / Prédio">
+
+        <button onclick="adicionar()">Adicionar</button>
+    </div>
+
+    <div class="filtro">
+        <select id="filtroDia" onchange="filtrar()">
+            <option value="Todos">Mostrar Todos</option>
+            <option value="Segunda">Segunda</option>
+            <option value="Terça">Terça</option>
+            <option value="Quarta">Quarta</option>
+            <option value="Quinta">Quinta</option>
+            <option value="Sexta">Sexta</option>
+        </select>
+    </div>
+
+    <div id="lista"></div>
+</div>
+
+<script>
+let disciplinas = [];
+
+function adicionar() {
+    const nome = document.getElementById("nome").value;
+    const dia = document.getElementById("dia").value;
+    const local = document.getElementById("local").value;
+
+    if (nome === "" || local === "") {
+        alert("Preencha todos os campos!");
+        return;
+    }
+
+    disciplinas.push({ nome, dia, local });
+    atualizarLista();
+}
+
+function atualizarLista(filtro = "Todos") {
+    const lista = document.getElementById("lista");
+    lista.innerHTML = "";
+
+    disciplinas
+        .filter(d => filtro === "Todos" || d.dia === filtro)
+        .forEach(d => {
+            lista.innerHTML += `
+                <div class="card">
+                    <strong>${d.nome}</strong><br>
+                    📅 ${d.dia}<br>
+                    📍 ${d.local}
+                </div>
+            `;
+        });
+}
+
+function filtrar() {
+    const filtro = document.getElementById("filtroDia").value;
+    atualizarLista(filtro);
+}
+</script>
+
+</body>
+</html>
