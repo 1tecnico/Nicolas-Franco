@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mochila Digital - 2º Ano Ensino Médio</title>
+
+<style>
+body{
+    margin:0;
+    font-family: Arial, Helvetica, sans-serif;
+    background:#f4f6f9;
+}
+
+/* HEADER */
+header{
+    background:linear-gradient(90deg,#0f2027,#203a43,#2c5364);
+    color:white;
+    padding:30px;
+    text-align:center;
+}
+
+/* MENU */
+nav{
+    background:#1c2833;
+    padding:15px;
+    text-align:center;
+}
+nav a{
+    color:white;
+    margin:0 10px;
+    text-decoration:none;
+    font-weight:bold;
+}
+nav a:hover{
+    color:#00c3ff;
+}
+
+/* SECTIONS */
+section{
+    padding:40px;
+    max-width:1000px;
+    margin:auto;
+}
+.card{
+    background:white;
+    padding:20px;
+    margin:20px 0;
+    border-radius:10px;
+    box-shadow:0 4px 10px rgba(0,0,0,0.1);
+}
+h2{
+    color:#203a43;
+}
+
+/* BOTÕES */
+button{
+    background:#203a43;
+    color:white;
+    border:none;
+    padding:8px 12px;
+    border-radius:5px;
+    cursor:pointer;
+}
+button:hover{
+    background:#00c3ff;
+}
+
+/* MOCHILA */
+#mochilaLista li{
+    margin:5px 0;
+}
+
+/* CALCULADORA */
+.calculadora{
+    position:fixed;
+    bottom:20px;
+    right:20px;
+    background:white;
+    padding:15px;
+    border-radius:10px;
+    box-shadow:0 4px 15px rgba(0,0,0,0.3);
+    width:200px;
+}
+.calculadora input{
+    width:100%;
+    padding:5px;
+    margin-bottom:5px;
+}
+.calculadora button{
+    width:45px;
+    margin:2px;
+}
+
+footer{
+    background:#1c2833;
+    color:white;
+    text-align:center;
+    padding:20px;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<h1>Mochila Digital</h1>
+<p>Organize suas matérias do 2º Ano</p>
+</header>
+
+<nav>
+<a href="#materias">Matérias</a>
+<a href="#mochila">Minha Mochila</a>
+</nav>
+
+<section id="materias">
+<div class="card">
+<h2>Matérias Disponíveis</h2>
+<ul>
+<li>Português <button onclick="adicionar('Português')">Adicionar</button></li>
+<li>Matemática <button onclick="adicionar('Matemática')">Adicionar</button></li>
+<li>Biologia <button onclick="adicionar('Biologia')">Adicionar</button></li>
+<li>Química <button onclick="adicionar('Química')">Adicionar</button></li>
+<li>Física <button onclick="adicionar('Física')">Adicionar</button></li>
+<li>História <button onclick="adicionar('História')">Adicionar</button></li>
+<li>Geografia <button onclick="adicionar('Geografia')">Adicionar</button></li>
+<li>Inglês <button onclick="adicionar('Inglês')">Adicionar</button></li>
+<li>Programação Web <button onclick="adicionar('Programação Web')">Adicionar</button></li>
+<li>AMC <button onclick="adicionar('AMC')">Adicionar</button></li>
+</ul>
+</div>
+</section>
+
+<section id="mochila">
+<div class="card">
+<h2>🎒 Minha Mochila</h2>
+<input type="text" id="novaMateria" placeholder="Digite o nome da matéria">
+<button onclick="adicionarPersonalizada()">Salvar</button>
+<ul id="mochilaLista"></ul>
+</div>
+</section>
+
+<section>
+<div class="card">
+<h2>5 curiosidades de passarinhos</h2>
+<ul>
+<li>Alguns passarinhos enxergam cores que humanos não conseguem ver.</li>
+<li>O coração pode bater mais de 1.000 vezes por minuto.</li>
+<li>Usam o campo magnético da Terra para se orientar.</li>
+<li>O menor do mundo é o beija-flor-abelha.</li>
+<li>Alguns imitam sons de pessoas e outros animais.</li>
+</ul>
+</div>
+</section>
+
+<!-- CALCULADORA -->
+<div class="calculadora">
+<input type="text" id="resultado" disabled>
+<br>
+<button onclick="add('7')">7</button>
+<button onclick="add('8')">8</button>
+<button onclick="add('9')">9</button>
+<button onclick="add('/')">/</button><br>
+<button onclick="add('4')">4</button>
+<button onclick="add('5')">5</button>
+<button onclick="add('6')">6</button>
+<button onclick="add('*')">*</button><br>
+<button onclick="add('1')">1</button>
+<button onclick="add('2')">2</button>
+<button onclick="add('3')">3</button>
+<button onclick="add('-')">-</button><br>
+<button onclick="add('0')">0</button>
+<button onclick="calcular()">=</button>
+<button onclick="limpar()">C</button>
+<button onclick="add('+')">+</button>
+</div>
+
+<footer>
+<p>© 2026 Mochila Digital - 2º Ano Ensino Médio</p>
+</footer>
+
+<script>
+function adicionar(materia){
+    let lista = document.getElementById("mochilaLista");
+    let item = document.createElement("li");
+    item.textContent = materia;
+    lista.appendChild(item);
+}
+
+function adicionarPersonalizada(){
+    let nome = document.getElementById("novaMateria").value;
+    if(nome !== ""){
+        adicionar(nome);
+        document.getElementById("novaMateria").value="";
+    }
+}
+
+/* CALCULADORA */
+function add(valor){
+    document.getElementById("resultado").value += valor;
+}
+function calcular(){
+    try{
+        document.getElementById("resultado").value =
+        eval(document.getElementById("resultado").value);
+    }catch{
+        alert("Erro no cálculo");
+    }
+}
+function limpar(){
+    document.getElementById("resultado").value="";
+}
+</script>
+
+</body>
+</html>
