@@ -4,87 +4,63 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Mochila Digital</title>
-
 <style>
-
 body{
 margin:0;
-font-family:Arial, Helvetica, sans-serif;
+font-family:Arial;
 background:linear-gradient(135deg,#dfe9f3,#ffffff);
 }
-
 header{
 background:linear-gradient(90deg,#0f2027,#203a43,#2c5364);
 color:white;
 padding:30px;
 text-align:center;
-box-shadow:0 4px 10px rgba(0,0,0,0.2);
 }
-
 section{
-max-width:800px;
+max-width:900px;
 margin:40px auto;
 background:white;
 padding:30px;
 border-radius:12px;
 box-shadow:0 6px 20px rgba(0,0,0,0.1);
 }
-
-input{
-padding:12px;
-width:60%;
-border-radius:6px;
-border:1px solid #ccc;
-font-size:16px;
+h2{
+margin-top:0;
 }
-
-button{
-padding:10px 14px;
-border:none;
-background:#203a43;
-color:white;
-border-radius:6px;
-cursor:pointer;
-font-size:14px;
-}
-
-button:hover{
-background:#00c3ff;
-}
-
 ul{
 list-style:none;
 padding:0;
 }
-
 li{
 background:#f4f6f9;
 margin:10px 0;
 padding:12px;
 border-radius:8px;
 display:flex;
-justify-content:space-between;
 align-items:center;
+gap:12px;
 }
-
+button{
+padding:8px 12px;
+border:none;
+background:#203a43;
+color:white;
+border-radius:6px;
+cursor:pointer;
+}
+button:hover{
+background:#00c3ff;
+}
 .excluir{
 background:#e74c3c;
 }
-
-.excluir:hover{
-background:#ff6b5e;
-}
-
 footer{
 background:#1c2833;
 color:white;
 text-align:center;
 padding:20px;
-margin-top:40px;
 }
-
 /* Calculadora */
-
 .calculadora{
 position:fixed;
 right:20px;
@@ -93,10 +69,9 @@ width:220px;
 background:#1c2833;
 padding:15px;
 border-radius:12px;
-box-shadow:0 6px 20px rgba(0,0,0,0.3);
 color:white;
+box-shadow:0 6px 20px rgba(0,0,0,0.3);
 }
-
 .calculadora input{
 width:100%;
 margin-bottom:10px;
@@ -106,207 +81,337 @@ border:none;
 border-radius:5px;
 text-align:right;
 }
-
 .calculadora button{
 width:45px;
 margin:3px;
 background:#34495e;
 }
-
 .calculadora button:hover{
 background:#00c3ff;
 }
-
-/* Quiz */
-
 .quiz{
 margin-top:30px;
 }
-
 .pergunta{
 background:#f4f6f9;
 padding:15px;
-border-radius:8px;
 margin-bottom:15px;
+border-radius:8px;
 }
-
 .pergunta input{
+padding:8px;
+font-size:16px;
 width:80px;
+text-align:center;
+}
+.feedback{
 margin-left:10px;
-}
-
-.resultado{
-margin-top:15px;
 font-weight:bold;
-font-size:18px;
 }
-
+.acertou { color: green; }
+.errou { color: red; }
+#placar{
+font-size:20px;
+font-weight:bold;
+margin:20px 0;
+text-align:center;
+}
+#motivacional{
+font-size:18px;
+text-align:center;
+color:#203a43;
+font-style:italic;
+margin-top:30px;
+}
+img.materia-icon {
+border-radius:6px;
+object-fit:cover;
+}
 </style>
 </head>
-
 <body>
-
 <header>
 <h1>🎒 Mochila Digital</h1>
 <p>Organize suas matérias</p>
 </header>
-
 <section>
-
-<h2>Adicionar Matéria</h2>
-
-<input type="text" id="materiaInput" placeholder="Digite o nome da matéria">
-<button onclick="adicionarMateria()">Adicionar</button>
-
-<h2>Matérias na Mochila</h2>
+<h2>📚 Matérias Disponíveis</h2>
+<ul id="materiasDisponiveis">
+  <li>
+    <img src="https://pnld.smeducacao.com.br/wp-content/uploads/2023/05/GA_PORTUGUES2.png" alt="Português" width="50" class="materia-icon">
+    Português 
+    <button onclick="adicionarMateria('Português')">Colocar na mochila</button>
+  </li>
+  <li>
+    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhRjrQJhAnFu2f1Cf5KnEc_RCc9mu0ummnhrkfXn43HUFszsrl7IyDmXCJP7EIbQolhGfLV_VSA6Xwtzd07-dbhLIttyjkIh3N1029afzxOTNHI2KTP9PEdNC7F00-b0V_42cbuLDnvF_4/s1600/Capa-caderno-matem%C3%A1tica-imprimir-espa%C3%A7oeducar+(2).jpg" alt="Matemática" width="50" class="materia-icon">
+    Matemática 
+    <button onclick="adicionarMateria('Matemática')">Colocar na mochila</button>
+  </li>
+  <li>
+    <img src="https://static.preparaenem.com/2021/02/celula-vegetal.jpg" alt="Biologia" width="50" class="materia-icon">
+    Biologia 
+    <button onclick="adicionarMateria('Biologia')">Colocar na mochila</button>
+  </li>
+  <li>
+    <img src="https://m.media-amazon.com/images/I/A1fliDrSOiL.jpg" alt="Física" width="50" class="materia-icon">
+    Física 
+    <button onclick="adicionarMateria('Física')">Colocar na mochila</button>
+  </li>
+  <li>
+    <img src="https://m.media-amazon.com/images/I/71uc5gfZfdL._AC_UF1000,1000_QL80_.jpg" alt="Química" width="50" class="materia-icon">
+    Química 
+    <button onclick="adicionarMateria('Química')">Colocar na mochila</button>
+  </li>
+  <li>
+    <img src="https://thumbs.dreamstime.com/z/livro-da-l%C3%ADngua-inglesa-com-o-mapa-do-estados-unidos-rendi%C3%A7%C3%A3o-d-isolada-no-fundo-branco-147239950.jpg" alt="Inglês" width="50" class="materia-icon">
+    Inglês 
+    <button onclick="adicionarMateria('Inglês')">Colocar na mochila</button>
+  </li>
+  <li>
+    <img src="https://pnld.smeducacao.com.br/wp-content/uploads/2023/05/GA_PORTUGUES2.png" alt="Estudos Orientados" width="50" class="materia-icon">
+    Estudos Orientados 
+    <button onclick="adicionarMateria('Estudos Orientados')">Colocar na mochila</button>
+  </li>
+  <li>
+    <img src="https://f.i.uol.com.br/fotografia/2025/02/27/174068615067c0c346bf511_1740686150_3x2_lg.jpg" alt="Geografia" width="50" class="materia-icon">
+    Geografia 
+    <button onclick="adicionarMateria('Geografia')">Colocar na mochila</button>
+  </li>
+  <li>
+    <img src="https://m.media-amazon.com/images/I/51QH2XvpxGL.jpg" alt="Lógica de Programação" width="50" class="materia-icon">
+    Lógica de Programação 
+    <button onclick="adicionarMateria('Lógica de Programação')">Colocar na mochila</button>
+  </li>
+  <li>
+    <img src="https://thumbs.dreamstime.com/b/conjunto-de-%C3%ADcones-html-css-js-do-logotipo-desenvolvimento-da-web-e-s%C3%ADmbolo-programa%C3%A7%C3%A3o-javascript-171669655.jpg" alt="Programação Web" width="50" class="materia-icon">
+    Programação Web 
+    <button onclick="adicionarMateria('Programação Web')">Colocar na mochila</button>
+  </li>
+  <li>
+    <img src="https://dxkck1miuebqc.cloudfront.net/books/186780/preview/cover_facebook.jpg" alt="POO - Java" width="50" class="materia-icon">
+    POO - Java 
+    <button onclick="adicionarMateria('POO - Java')">Colocar na mochila</button>
+  </li>
+  <li>
+    <img src="https://m.media-amazon.com/images/I/51QH2XvpxGL.jpg" alt="AMC" width="50" class="materia-icon">
+    AMC 
+    <button onclick="adicionarMateria('AMC')">Colocar na mochila</button>
+  </li>
+  <li>
+    <img src="https://thumbs.dreamstime.com/b/conjunto-de-%C3%ADcones-html-css-js-do-logotipo-desenvolvimento-da-web-e-s%C3%ADmbolo-programa%C3%A7%C3%A3o-javascript-171669655.jpg" alt="HTML" width="50" class="materia-icon">
+    HTML 
+    <button onclick="adicionarMateria('HTML')">Colocar na mochila</button>
+  </li>
+</ul>
+</section>
+<section>
+<h2>🎒 Minha Mochila</h2>
 <ul id="listaMaterias"></ul>
-
 </section>
-
 <section class="quiz">
+<h2>🧠 Quiz de Conhecimentos - Teste suas matérias!</h2>
+<p id="placar">Placar: 0 acertos de 0 perguntas</p>
 
-<h2>🧠 Desafio de Matemática</h2>
-
-<div class="pergunta">
-4 + 6 = <input id="p1">
+<!-- Matemática -->
+<div class="pergunta" data-resposta="10">
+  4 + 6 = <input type="text" onkeypress="if(event.key==='Enter') verificar(this)"> 
+  <span class="feedback"></span>
+</div>
+<div class="pergunta" data-resposta="25">
+  5 × 5 = <input type="text" onkeypress="if(event.key==='Enter') verificar(this)"> 
+  <span class="feedback"></span>
+</div>
+<div class="pergunta" data-resposta="100">
+  10² = <input type="text" onkeypress="if(event.key==='Enter') verificar(this)"> 
+  <span class="feedback"></span>
 </div>
 
-<div class="pergunta">
-9 × 3 = <input id="p2">
+<!-- Português -->
+<div class="pergunta" data-resposta="substantivo">
+  "Casa" é um: <input type="text" onkeypress="if(event.key==='Enter') verificar(this)"> 
+  <span class="feedback"></span>
+</div>
+<div class="pergunta" data-resposta="verbo">
+  "Correr" é um: <input type="text" onkeypress="if(event.key==='Enter') verificar(this)"> 
+  <span class="feedback"></span>
 </div>
 
-<div class="pergunta">
-15 - 7 = <input id="p3">
+<!-- Biologia -->
+<div class="pergunta" data-resposta="fotossíntese">
+  Processo que as plantas usam para produzir alimento: <input type="text" onkeypress="if(event.key==='Enter') verificar(this)"> 
+  <span class="feedback"></span>
+</div>
+<div class="pergunta" data-resposta="célula">
+  Unidade básica da vida: <input type="text" onkeypress="if(event.key==='Enter') verificar(this)"> 
+  <span class="feedback"></span>
 </div>
 
-<div class="pergunta">
-20 ÷ 4 = <input id="p4">
+<!-- Física -->
+<div class="pergunta" data-resposta="9.8">
+  Aceleração da gravidade na Terra (aprox.): <input type="text" onkeypress="if(event.key==='Enter') verificar(this)"> 
+  <span class="feedback"></span>
 </div>
 
-<button onclick="corrigir()">Ver Resultado</button>
+<!-- Química -->
+<div class="pergunta" data-resposta="H2O">
+  Fórmula da água: <input type="text" onkeypress="if(event.key==='Enter') verificar(this)"> 
+  <span class="feedback"></span>
+</div>
 
-<div class="resultado" id="resultado"></div>
+<!-- Inglês -->
+<div class="pergunta" data-resposta="hello">
+  "Olá" em inglês: <input type="text" onkeypress="if(event.key==='Enter') verificar(this)"> 
+  <span class="feedback"></span>
+</div>
+<div class="pergunta" data-resposta="book">
+  "Livro" em inglês: <input type="text" onkeypress="if(event.key==='Enter') verificar(this)"> 
+  <span class="feedback"></span>
+</div>
 
+<!-- Geografia -->
+<div class="pergunta" data-resposta="7">
+  Quantos continentes existem? <input type="text" onkeypress="if(event.key==='Enter') verificar(this)"> 
+  <span class="feedback"></span>
+</div>
+<div class="pergunta" data-resposta="brasil">
+  País com maior floresta tropical: <input type="text" onkeypress="if(event.key==='Enter') verificar(this)"> 
+  <span class="feedback"></span>
+</div>
+
+<!-- Programação básica -->
+<div class="pergunta" data-resposta="<p>">
+  Tag para parágrafo em HTML: <input type="text" onkeypress="if(event.key==='Enter') verificar(this)"> 
+  <span class="feedback"></span>
+</div>
+<div class="pergunta" data-resposta="if">
+  Estrutura condicional em várias linguagens: <input type="text" onkeypress="if(event.key==='Enter') verificar(this)"> 
+  <span class="feedback"></span>
+</div>
+
+<button onclick="corrigirTodos()">Corrigir Todas</button>
+<p id="resultado"></p>
+
+<div id="motivacional">
+  "Estude hoje pelo seu sonho. Pequenos acertos levam ao grande sucesso! Continue tentando, você é capaz de acertar muito mais! 🚀💪"
+</div>
 </section>
-
 <footer>
 <p>© 2026 Mochila Digital</p>
 </footer>
-
-<!-- Calculadora -->
-
 <div class="calculadora">
-
 <input id="calcDisplay" disabled>
-
 <div>
 <button onclick="add('7')">7</button>
 <button onclick="add('8')">8</button>
 <button onclick="add('9')">9</button>
 <button onclick="add('/')">÷</button>
 </div>
-
 <div>
 <button onclick="add('4')">4</button>
 <button onclick="add('5')">5</button>
 <button onclick="add('6')">6</button>
 <button onclick="add('*')">×</button>
 </div>
-
 <div>
 <button onclick="add('1')">1</button>
 <button onclick="add('2')">2</button>
 <button onclick="add('3')">3</button>
 <button onclick="add('-')">-</button>
 </div>
-
 <div>
 <button onclick="add('0')">0</button>
 <button onclick="limpar()">C</button>
 <button onclick="calcular()">=</button>
 <button onclick="add('+')">+</button>
 </div>
-
 </div>
 
 <script>
-
 let lista = document.getElementById("listaMaterias");
+let totalPerguntas = 0;
+let acertos = 0;
 
 window.onload = function(){
-let materias = JSON.parse(localStorage.getItem("materias")) || [];
-materias.forEach(m => criarItem(m));
+  let materias = JSON.parse(localStorage.getItem("materias")) || [];
+  materias.forEach(m => criarItem(m));
+  contarPerguntas();
 };
 
-function adicionarMateria(){
-let input = document.getElementById("materiaInput");
-let nome = input.value.trim();
+function contarPerguntas() {
+  totalPerguntas = document.querySelectorAll('.pergunta').length;
+  atualizarPlacar();
+}
 
-if(nome === "") return;
+function verificar(input) {
+  let pergunta = input.parentElement;
+  let respostaCorreta = pergunta.getAttribute('data-resposta').toLowerCase().trim();
+  let respostaUser = input.value.toLowerCase().trim();
+  let feedback = pergunta.querySelector('.feedback');
 
-criarItem(nome);
-salvar(nome);
-input.value="";
+  if (respostaUser === '') return;
+
+  if (respostaUser === respostaCorreta) {
+    feedback.textContent = '✔ Acertou!';
+    feedback.className = 'feedback acertou';
+    if (!pergunta.classList.contains('acertada')) {
+      acertos++;
+      pergunta.classList.add('acertada');
+      atualizarPlacar();
+    }
+  } else {
+    feedback.textContent = '✘ Errou! Tente novamente.';
+    feedback.className = 'feedback errou';
+  }
+}
+
+function corrigirTodos() {
+  document.querySelectorAll('.pergunta input').forEach(input => {
+    verificar(input);
+  });
+  document.getElementById("resultado").innerHTML = "Quiz corrigido! Continue praticando!";
+}
+
+function atualizarPlacar() {
+  document.getElementById("placar").innerHTML = `Placar: ${acertos} acertos de ${totalPerguntas} perguntas`;
+}
+
+function adicionarMateria(nome){
+  criarItem(nome);
+  let materias = JSON.parse(localStorage.getItem("materias")) || [];
+  if(!materias.includes(nome)){
+    materias.push(nome);
+    localStorage.setItem("materias", JSON.stringify(materias));
+  }
 }
 
 function criarItem(nome){
-let li = document.createElement("li");
-li.innerHTML = `
-${nome}
-<button class="excluir" onclick="removerMateria(this,'${nome}')">Excluir</button>
-`;
-lista.appendChild(li);
-}
-
-function salvar(nome){
-let materias = JSON.parse(localStorage.getItem("materias")) || [];
-materias.push(nome);
-localStorage.setItem("materias", JSON.stringify(materias));
+  let li = document.createElement("li");
+  li.innerHTML = `${nome} <button class="excluir" onclick="removerMateria(this,'${nome}')">Remover</button>`;
+  lista.appendChild(li);
 }
 
 function removerMateria(botao,nome){
-botao.parentElement.remove();
-let materias = JSON.parse(localStorage.getItem("materias")) || [];
-materias = materias.filter(m => m !== nome);
-localStorage.setItem("materias", JSON.stringify(materias));
+  botao.parentElement.remove();
+  let materias = JSON.parse(localStorage.getItem("materias")) || [];
+  materias = materias.filter(m => m !== nome);
+  localStorage.setItem("materias", JSON.stringify(materias));
 }
 
-/* CALCULADORA */
-
+/* calculadora */
 function add(valor){
-document.getElementById("calcDisplay").value += valor;
+  document.getElementById("calcDisplay").value += valor;
 }
-
 function limpar(){
-document.getElementById("calcDisplay").value = "";
+  document.getElementById("calcDisplay").value="";
 }
-
 function calcular(){
-let display = document.getElementById("calcDisplay");
-try{
-display.value = eval(display.value);
-}catch{
-display.value = "Erro";
+  let display=document.getElementById("calcDisplay");
+  try{
+    display.value = eval(display.value);
+  }catch{
+    display.value="Erro";
+  }
 }
-}
-
-/* QUIZ */
-
-function corrigir(){
-
-let pontos = 0;
-
-if(document.getElementById("p1").value == 10) pontos++;
-if(document.getElementById("p2").value == 27) pontos++;
-if(document.getElementById("p3").value == 8) pontos++;
-if(document.getElementById("p4").value == 5) pontos++;
-
-document.getElementById("resultado").innerHTML =
-"Você acertou " + pontos + " de 4 perguntas!";
-
-}
-
 </script>
-
 </body>
 </html>
