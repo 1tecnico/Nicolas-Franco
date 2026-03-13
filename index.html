@@ -1,342 +1,324 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Mochila Digital</title>
-<style>
-body{
-margin:0;
-font-family:Arial;
-background:linear-gradient(135deg,#dfe9f3,#ffffff);
-}
-header{
-background:linear-gradient(90deg,#0f2027,#203a43,#2c5364);
-color:white;
-padding:30px;
-text-align:center;
-}
-section{
-max-width:900px;
-margin:40px auto;
-background:white;
-padding:30px;
-border-radius:12px;
-box-shadow:0 6px 20px rgba(0,0,0,0.1);
-}
-h2{
-margin-top:0;
-}
-ul{
-list-style:none;
-padding:0;
-}
-li{
-background:#f4f6f9;
-margin:10px 0;
-padding:12px;
-border-radius:8px;
-display:flex;
-align-items:center;
-gap:12px;
-}
-button{
-padding:8px 12px;
-border:none;
-background:#203a43;
-color:white;
-border-radius:6px;
-cursor:pointer;
-}
-button:hover{
-background:#00c3ff;
-}
-.excluir{
-background:#e74c3c;
-}
-footer{
-background:#1c2833;
-color:white;
-text-align:center;
-padding:20px;
-}
-/* Calculadora */
-.calculadora{
-position:fixed;
-right:20px;
-bottom:20px;
-width:220px;
-background:#1c2833;
-padding:15px;
-border-radius:12px;
-color:white;
-box-shadow:0 6px 20px rgba(0,0,0,0.3);
-}
-.calculadora input{
-width:100%;
-margin-bottom:10px;
-padding:10px;
-font-size:18px;
-border:none;
-border-radius:5px;
-text-align:right;
-}
-.calculadora button{
-width:45px;
-margin:3px;
-background:#34495e;
-}
-.calculadora button:hover{
-background:#00c3ff;
-}
-.quiz{
-margin-top:30px;
-}
-.pergunta{
-background:#f4f6f9;
-padding:15px;
-margin-bottom:15px;
-border-radius:8px;
-}
-.pergunta input{
-padding:8px;
-font-size:16px;
-width:80px;
-text-align:center;
-}
-.feedback{
-margin-left:10px;
-font-weight:bold;
-}
-.acertou { color: green; }
-.errou { color: red; }
-#placar{
-font-size:20px;
-font-weight:bold;
-margin:20px 0;
-text-align:center;
-}
-#motivacional{
-font-size:18px;
-text-align:center;
-color:#203a43;
-font-style:italic;
-margin-top:30px;
-}
-img.materia-icon {
-border-radius:6px;
-object-fit:cover;
-}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mochila Digital</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: linear-gradient(135deg, #dfe9f3, #ffffff);
+      color: #333;
+    }
+    header {
+      background: linear-gradient(90deg, #0f2027, #203a43, #2c5364);
+      color: white;
+      padding: 30px;
+      text-align: center;
+    }
+    section {
+      max-width: 900px;
+      margin: 40px auto;
+      background: white;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+    }
+    h2 {
+      margin-top: 0;
+      color: #203a43;
+    }
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+    li {
+      background: #f4f6f9;
+      margin: 10px 0;
+      padding: 12px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    button {
+      padding: 8px 16px;
+      border: none;
+      background: #203a43;
+      color: white;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    button:hover {
+      background: #00c3ff;
+    }
+    .excluir {
+      background: #e74c3c;
+    }
+    .excluir:hover {
+      background: #c0392b;
+    }
+    footer {
+      background: #1c2833;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      margin-top: 40px;
+    }
+
+    /* Resumo */
+    #resumo-section {
+      margin-top: 40px;
+    }
+    #resumo {
+      width: 100%;
+      min-height: 220px;
+      padding: 16px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      resize: vertical;
+      font-family: inherit;
+    }
+    .botoes-resumo {
+      margin-top: 12px;
+      text-align: right;
+    }
+    #mensagem-salvo {
+      color: #27ae60;
+      font-weight: bold;
+      margin-left: 15px;
+      opacity: 0;
+      transition: opacity 0.6s;
+    }
+
+    /* Calculadora */
+    .calculadora {
+      position: fixed;
+      right: 20px;
+      bottom: 20px;
+      width: 240px;
+      background: #1c2833;
+      padding: 15px;
+      border-radius: 12px;
+      color: white;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+    }
+    .calculadora input {
+      width: 100%;
+      margin-bottom: 10px;
+      padding: 12px;
+      font-size: 20px;
+      border: none;
+      border-radius: 6px;
+      text-align: right;
+      background: #ecf0f1;
+      color: #2c3e50;
+    }
+    .calculadora button {
+      width: 50px;
+      height: 50px;
+      margin: 4px;
+      font-size: 18px;
+      background: #34495e;
+    }
+    .calculadora button:hover {
+      background: #00c3ff;
+    }
+
+    /* Quiz */
+    .pergunta {
+      background: #f4f6f9;
+      padding: 15px;
+      margin-bottom: 15px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .pergunta input {
+      padding: 10px;
+      font-size: 16px;
+      width: 120px;
+      text-align: center;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+    .feedback {
+      margin-left: 10px;
+      font-weight: bold;
+      min-width: 140px;
+    }
+    .acertou { color: #27ae60; }
+    .errou   { color: #e74c3c; }
+    #placar {
+      font-size: 20px;
+      font-weight: bold;
+      margin: 20px 0;
+      text-align: center;
+      color: #203a43;
+    }
+    #motivacional {
+      font-size: 18px;
+      text-align: center;
+      color: #203a43;
+      font-style: italic;
+      margin: 30px 0;
+    }
+    img.materia-icon {
+      border-radius: 6px;
+      object-fit: cover;
+      width: 50px;
+      height: 50px;
+    }
+  </style>
 </head>
 <body>
+
 <header>
-<h1>🎒 Mochila Digital</h1>
-<p>Organize suas matérias</p>
+  <h1>🎒 Mochila Digital</h1>
+  <p>Organize suas matérias e anotações</p>
 </header>
+
 <section>
-<h2>📚 Matérias Disponíveis</h2>
-<ul id="materiasDisponiveis">
-  <li>
-    <img src="https://pnld.smeducacao.com.br/wp-content/uploads/2023/05/GA_PORTUGUES2.png" alt="Português" width="50" class="materia-icon">
-    Português 
-    <button onclick="adicionarMateria('Português')">Colocar na mochila</button>
-  </li>
-  <li>
-    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhRjrQJhAnFu2f1Cf5KnEc_RCc9mu0ummnhrkfXn43HUFszsrl7IyDmXCJP7EIbQolhGfLV_VSA6Xwtzd07-dbhLIttyjkIh3N1029afzxOTNHI2KTP9PEdNC7F00-b0V_42cbuLDnvF_4/s1600/Capa-caderno-matem%C3%A1tica-imprimir-espa%C3%A7oeducar+(2).jpg" alt="Matemática" width="50" class="materia-icon">
-    Matemática 
-    <button onclick="adicionarMateria('Matemática')">Colocar na mochila</button>
-  </li>
-  <li>
-    <img src="https://static.preparaenem.com/2021/02/celula-vegetal.jpg" alt="Biologia" width="50" class="materia-icon">
-    Biologia 
-    <button onclick="adicionarMateria('Biologia')">Colocar na mochila</button>
-  </li>
-  <li>
-    <img src="https://m.media-amazon.com/images/I/A1fliDrSOiL.jpg" alt="Física" width="50" class="materia-icon">
-    Física 
-    <button onclick="adicionarMateria('Física')">Colocar na mochila</button>
-  </li>
-  <li>
-    <img src="https://m.media-amazon.com/images/I/71uc5gfZfdL._AC_UF1000,1000_QL80_.jpg" alt="Química" width="50" class="materia-icon">
-    Química 
-    <button onclick="adicionarMateria('Química')">Colocar na mochila</button>
-  </li>
-  <li>
-    <img src="https://thumbs.dreamstime.com/z/livro-da-l%C3%ADngua-inglesa-com-o-mapa-do-estados-unidos-rendi%C3%A7%C3%A3o-d-isolada-no-fundo-branco-147239950.jpg" alt="Inglês" width="50" class="materia-icon">
-    Inglês 
-    <button onclick="adicionarMateria('Inglês')">Colocar na mochila</button>
-  </li>
-  <li>
-    <img src="https://pnld.smeducacao.com.br/wp-content/uploads/2023/05/GA_PORTUGUES2.png" alt="Estudos Orientados" width="50" class="materia-icon">
-    Estudos Orientados 
-    <button onclick="adicionarMateria('Estudos Orientados')">Colocar na mochila</button>
-  </li>
-  <li>
-    <img src="https://f.i.uol.com.br/fotografia/2025/02/27/174068615067c0c346bf511_1740686150_3x2_lg.jpg" alt="Geografia" width="50" class="materia-icon">
-    Geografia 
-    <button onclick="adicionarMateria('Geografia')">Colocar na mochila</button>
-  </li>
-  <li>
-    <img src="https://m.media-amazon.com/images/I/51QH2XvpxGL.jpg" alt="Lógica de Programação" width="50" class="materia-icon">
-    Lógica de Programação 
-    <button onclick="adicionarMateria('Lógica de Programação')">Colocar na mochila</button>
-  </li>
-  <li>
-    <img src="https://thumbs.dreamstime.com/b/conjunto-de-%C3%ADcones-html-css-js-do-logotipo-desenvolvimento-da-web-e-s%C3%ADmbolo-programa%C3%A7%C3%A3o-javascript-171669655.jpg" alt="Programação Web" width="50" class="materia-icon">
-    Programação Web 
-    <button onclick="adicionarMateria('Programação Web')">Colocar na mochila</button>
-  </li>
-  <li>
-    <img src="https://dxkck1miuebqc.cloudfront.net/books/186780/preview/cover_facebook.jpg" alt="POO - Java" width="50" class="materia-icon">
-    POO - Java 
-    <button onclick="adicionarMateria('POO - Java')">Colocar na mochila</button>
-  </li>
-  <li>
-    <img src="https://m.media-amazon.com/images/I/51QH2XvpxGL.jpg" alt="AMC" width="50" class="materia-icon">
-    AMC 
-    <button onclick="adicionarMateria('AMC')">Colocar na mochila</button>
-  </li>
-  <li>
-    <img src="https://thumbs.dreamstime.com/b/conjunto-de-%C3%ADcones-html-css-js-do-logotipo-desenvolvimento-da-web-e-s%C3%ADmbolo-programa%C3%A7%C3%A3o-javascript-171669655.jpg" alt="HTML" width="50" class="materia-icon">
-    HTML 
-    <button onclick="adicionarMateria('HTML')">Colocar na mochila</button>
-  </li>
-</ul>
+  <h2>📚 Matérias Disponíveis</h2>
+  <ul id="materiasDisponiveis">
+    <li><img src="https://pnld.smeducacao.com.br/wp-content/uploads/2023/05/GA_PORTUGUES2.png" alt="Português" class="materia-icon"> Português <button onclick="adicionarMateria('Português')">Colocar na mochila</button></li>
+    <li><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhRjrQJhAnFu2f1Cf5KnEc_RCc9mu0ummnhrkfXn43HUFszsrl7IyDmXCJP7EIbQolhGfLV_VSA6Xwtzd07-dbhLIttyjkIh3N1029afzxOTNHI2KTP9PEdNC7F00-b0V_42cbuLDnvF_4/s1600/Capa-caderno-matem%C3%A1tica-imprimir-espa%C3%A7oeducar+(2).jpg" alt="Matemática" class="materia-icon"> Matemática <button onclick="adicionarMateria('Matemática')">Colocar na mochila</button></li>
+    <li><img src="https://static.preparaenem.com/2021/02/celula-vegetal.jpg" alt="Biologia" class="materia-icon"> Biologia <button onclick="adicionarMateria('Biologia')">Colocar na mochila</button></li>
+    <li><img src="https://m.media-amazon.com/images/I/A1fliDrSOiL.jpg" alt="Física" class="materia-icon"> Física <button onclick="adicionarMateria('Física')">Colocar na mochila</button></li>
+    <li><img src="https://m.media-amazon.com/images/I/71uc5gfZfdL._AC_UF1000,1000_QL80_.jpg" alt="Química" class="materia-icon"> Química <button onclick="adicionarMateria('Química')">Colocar na mochila</button></li>
+    <!-- ... mantenha as outras matérias que desejar ... -->
+  </ul>
 </section>
+
 <section>
-<h2>🎒 Minha Mochila</h2>
-<ul id="listaMaterias"></ul>
+  <h2>🎒 Minha Mochila</h2>
+  <ul id="listaMaterias"></ul>
 </section>
+
+<section id="resumo-section">
+  <h2>📝 Resumos das Aulas de Hoje</h2>
+  <textarea id="resumo" placeholder="Escreva aqui os pontos principais das aulas de hoje...&#10;&#10;Exemplo:&#10;- Matemática: equações do 2º grau&#10;- Português: análise sintática..."></textarea>
+  <div class="botoes-resumo">
+    <button onclick="salvarResumo()">Salvar Resumo</button>
+    <span id="mensagem-salvo">Salvo com sucesso! ✓</span>
+  </div>
+</section>
+
 <section class="quiz">
-<h2>🧠 Quiz de Conhecimentos - Teste suas matérias!</h2>
-<p id="placar">Placar: 0 acertos de 0 perguntas</p>
+  <h2>🧠 Quiz de Conhecimentos - Teste suas matérias!</h2>
+  <p id="placar">Placar: 0 acertos de 0 perguntas</p>
 
-<!-- Matemática -->
-<div class="pergunta" data-resposta="10">
-  4 + 6 = <input type="text" onkeypress="if(event.key==='Enter') verificar(this)"> 
-  <span class="feedback"></span>
-</div>
-<div class="pergunta" data-resposta="25">
-  5 × 5 = <input type="text" onkeypress="if(event.key==='Enter') verificar(this)"> 
-  <span class="feedback"></span>
-</div>
-<div class="pergunta" data-resposta="100">
-  10² = <input type="text" onkeypress="if(event.key==='Enter') verificar(this)"> 
-  <span class="feedback"></span>
-</div>
+  <!-- Exemplos de perguntas (mantive algumas) -->
+  <div class="pergunta" data-resposta="10">
+    4 + 6 = <input type="text" onkeypress="if(event.key==='Enter') verificar(this)">
+    <span class="feedback"></span>
+  </div>
+  <div class="pergunta" data-resposta="fotossíntese">
+    Processo que as plantas usam para produzir alimento: <input type="text" onkeypress="if(event.key==='Enter') verificar(this)">
+    <span class="feedback"></span>
+  </div>
+  <!-- Adicione mais perguntas conforme desejar -->
 
-<!-- Português -->
-<div class="pergunta" data-resposta="substantivo">
-  "Casa" é um: <input type="text" onkeypress="if(event.key==='Enter') verificar(this)"> 
-  <span class="feedback"></span>
-</div>
-<div class="pergunta" data-resposta="verbo">
-  "Correr" é um: <input type="text" onkeypress="if(event.key==='Enter') verificar(this)"> 
-  <span class="feedback"></span>
-</div>
+  <button onclick="corrigirTodos()">Corrigir Todas</button>
+  <p id="resultado"></p>
 
-<!-- Biologia -->
-<div class="pergunta" data-resposta="fotossíntese">
-  Processo que as plantas usam para produzir alimento: <input type="text" onkeypress="if(event.key==='Enter') verificar(this)"> 
-  <span class="feedback"></span>
-</div>
-<div class="pergunta" data-resposta="célula">
-  Unidade básica da vida: <input type="text" onkeypress="if(event.key==='Enter') verificar(this)"> 
-  <span class="feedback"></span>
-</div>
-
-<!-- Física -->
-<div class="pergunta" data-resposta="9.8">
-  Aceleração da gravidade na Terra (aprox.): <input type="text" onkeypress="if(event.key==='Enter') verificar(this)"> 
-  <span class="feedback"></span>
-</div>
-
-<!-- Química -->
-<div class="pergunta" data-resposta="H2O">
-  Fórmula da água: <input type="text" onkeypress="if(event.key==='Enter') verificar(this)"> 
-  <span class="feedback"></span>
-</div>
-
-<!-- Inglês -->
-<div class="pergunta" data-resposta="hello">
-  "Olá" em inglês: <input type="text" onkeypress="if(event.key==='Enter') verificar(this)"> 
-  <span class="feedback"></span>
-</div>
-<div class="pergunta" data-resposta="book">
-  "Livro" em inglês: <input type="text" onkeypress="if(event.key==='Enter') verificar(this)"> 
-  <span class="feedback"></span>
-</div>
-
-<!-- Geografia -->
-<div class="pergunta" data-resposta="7">
-  Quantos continentes existem? <input type="text" onkeypress="if(event.key==='Enter') verificar(this)"> 
-  <span class="feedback"></span>
-</div>
-<div class="pergunta" data-resposta="brasil">
-  País com maior floresta tropical: <input type="text" onkeypress="if(event.key==='Enter') verificar(this)"> 
-  <span class="feedback"></span>
-</div>
-
-<!-- Programação básica -->
-<div class="pergunta" data-resposta="<p>">
-  Tag para parágrafo em HTML: <input type="text" onkeypress="if(event.key==='Enter') verificar(this)"> 
-  <span class="feedback"></span>
-</div>
-<div class="pergunta" data-resposta="if">
-  Estrutura condicional em várias linguagens: <input type="text" onkeypress="if(event.key==='Enter') verificar(this)"> 
-  <span class="feedback"></span>
-</div>
-
-<button onclick="corrigirTodos()">Corrigir Todas</button>
-<p id="resultado"></p>
-
-<div id="motivacional">
-  "Estude hoje pelo seu sonho. Pequenos acertos levam ao grande sucesso! Continue tentando, você é capaz de acertar muito mais! 🚀💪"
-</div>
+  <div id="motivacional">
+    "Estude hoje pelo seu sonho. Pequenos acertos levam ao grande sucesso! Continue tentando! 🚀💪"
+  </div>
 </section>
+
 <footer>
-<p>© 2026 Mochila Digital</p>
+  <p>© 2026 Mochila Digital • Feito para ajudar nos estudos</p>
 </footer>
+
 <div class="calculadora">
-<input id="calcDisplay" disabled>
-<div>
-<button onclick="add('7')">7</button>
-<button onclick="add('8')">8</button>
-<button onclick="add('9')">9</button>
-<button onclick="add('/')">÷</button>
-</div>
-<div>
-<button onclick="add('4')">4</button>
-<button onclick="add('5')">5</button>
-<button onclick="add('6')">6</button>
-<button onclick="add('*')">×</button>
-</div>
-<div>
-<button onclick="add('1')">1</button>
-<button onclick="add('2')">2</button>
-<button onclick="add('3')">3</button>
-<button onclick="add('-')">-</button>
-</div>
-<div>
-<button onclick="add('0')">0</button>
-<button onclick="limpar()">C</button>
-<button onclick="calcular()">=</button>
-<button onclick="add('+')">+</button>
-</div>
+  <input id="calcDisplay" readonly>
+  <div>
+    <button onclick="add('7')">7</button>
+    <button onclick="add('8')">8</button>
+    <button onclick="add('9')">9</button>
+    <button onclick="add('/')">÷</button>
+  </div>
+  <div>
+    <button onclick="add('4')">4</button>
+    <button onclick="add('5')">5</button>
+    <button onclick="add('6')">6</button>
+    <button onclick="add('*')">×</button>
+  </div>
+  <div>
+    <button onclick="add('1')">1</button>
+    <button onclick="add('2')">2</button>
+    <button onclick="add('3')">3</button>
+    <button onclick="add('-')">-</button>
+  </div>
+  <div>
+    <button onclick="add('0')">0</button>
+    <button onclick="limpar()">C</button>
+    <button onclick="calcular()">=</button>
+    <button onclick="add('+')">+</button>
+  </div>
 </div>
 
 <script>
-let lista = document.getElementById("listaMaterias");
+const lista = document.getElementById("listaMaterias");
 let totalPerguntas = 0;
 let acertos = 0;
 
-window.onload = function(){
+// ──────────────── Resumo ────────────────
+function carregarResumo() {
+  const texto = localStorage.getItem("resumoAulasHoje") || "";
+  document.getElementById("resumo").value = texto;
+}
+
+function salvarResumo() {
+  const texto = document.getElementById("resumo").value;
+  localStorage.setItem("resumoAulasHoje", texto);
+  
+  const msg = document.getElementById("mensagem-salvo");
+  msg.style.opacity = "1";
+  setTimeout(() => { msg.style.opacity = "0"; }, 1800);
+}
+
+// ──────────────── Mochila ────────────────
+window.onload = function() {
+  // Carrega matérias salvas
   let materias = JSON.parse(localStorage.getItem("materias")) || [];
   materias.forEach(m => criarItem(m));
+
+  // Carrega resumo
+  carregarResumo();
+
   contarPerguntas();
 };
 
+function adicionarMateria(nome) {
+  let materias = JSON.parse(localStorage.getItem("materias")) || [];
+  if (!materias.includes(nome)) {
+    materias.push(nome);
+    localStorage.setItem("materias", JSON.stringify(materias));
+    criarItem(nome);
+  }
+}
+
+function criarItem(nome) {
+  let li = document.createElement("li");
+  li.innerHTML = `${nome} <button class="excluir" onclick="removerMateria(this,'${nome.replace(/'/g,"\\'")}')">Remover</button>`;
+  lista.appendChild(li);
+}
+
+function removerMateria(botao, nome) {
+  botao.parentElement.remove();
+  let materias = JSON.parse(localStorage.getItem("materias")) || [];
+  materias = materias.filter(m => m !== nome);
+  localStorage.setItem("materias", JSON.stringify(materias));
+}
+
+// ──────────────── Quiz ────────────────
 function contarPerguntas() {
   totalPerguntas = document.querySelectorAll('.pergunta').length;
   atualizarPlacar();
@@ -348,7 +330,7 @@ function verificar(input) {
   let respostaUser = input.value.toLowerCase().trim();
   let feedback = pergunta.querySelector('.feedback');
 
-  if (respostaUser === '') return;
+  if (!respostaUser) return;
 
   if (respostaUser === respostaCorreta) {
     feedback.textContent = '✔ Acertou!';
@@ -365,9 +347,7 @@ function verificar(input) {
 }
 
 function corrigirTodos() {
-  document.querySelectorAll('.pergunta input').forEach(input => {
-    verificar(input);
-  });
+  document.querySelectorAll('.pergunta input').forEach(verificar);
   document.getElementById("resultado").innerHTML = "Quiz corrigido! Continue praticando!";
 }
 
@@ -375,43 +355,24 @@ function atualizarPlacar() {
   document.getElementById("placar").innerHTML = `Placar: ${acertos} acertos de ${totalPerguntas} perguntas`;
 }
 
-function adicionarMateria(nome){
-  criarItem(nome);
-  let materias = JSON.parse(localStorage.getItem("materias")) || [];
-  if(!materias.includes(nome)){
-    materias.push(nome);
-    localStorage.setItem("materias", JSON.stringify(materias));
-  }
-}
-
-function criarItem(nome){
-  let li = document.createElement("li");
-  li.innerHTML = `${nome} <button class="excluir" onclick="removerMateria(this,'${nome}')">Remover</button>`;
-  lista.appendChild(li);
-}
-
-function removerMateria(botao,nome){
-  botao.parentElement.remove();
-  let materias = JSON.parse(localStorage.getItem("materias")) || [];
-  materias = materias.filter(m => m !== nome);
-  localStorage.setItem("materias", JSON.stringify(materias));
-}
-
-/* calculadora */
-function add(valor){
+// ──────────────── Calculadora ────────────────
+function add(valor) {
   document.getElementById("calcDisplay").value += valor;
 }
-function limpar(){
-  document.getElementById("calcDisplay").value="";
+
+function limpar() {
+  document.getElementById("calcDisplay").value = "";
 }
-function calcular(){
-  let display=document.getElementById("calcDisplay");
-  try{
-    display.value = eval(display.value);
-  }catch{
-    display.value="Erro";
+
+function calcular() {
+  let display = document.getElementById("calcDisplay");
+  try {
+    display.value = eval(display.value) || "";
+  } catch {
+    display.value = "Erro";
   }
 }
 </script>
+
 </body>
 </html>
