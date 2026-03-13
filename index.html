@@ -12,17 +12,14 @@
             --success: #27ae60;
             --bg: linear-gradient(135deg, #dfe9f3, #ffffff);
         }
-
         * { box-sizing: border-box; margin: 0; padding: 0; }
-
         body {
             font-family: Arial, Helvetica, sans-serif;
             background: var(--bg);
             color: #333;
             min-height: 100vh;
-            padding-bottom: 80px;
+            padding-bottom: 100px;
         }
-
         header {
             background: linear-gradient(90deg, #0f2027, #203a43, #2c5364);
             color: white;
@@ -30,7 +27,6 @@
             text-align: center;
             box-shadow: 0 4px 12px rgba(0,0,0,0.2);
         }
-
         section {
             max-width: 920px;
             margin: 2.5rem auto;
@@ -42,22 +38,12 @@
             transform: translateY(30px);
             transition: all 0.8s ease-out;
         }
-
         section.visible {
             opacity: 1;
             transform: translateY(0);
         }
-
-        h2 {
-            color: var(--primary);
-            margin-bottom: 1.2rem;
-        }
-
-        ul {
-            list-style: none;
-            padding: 0;
-        }
-
+        h2 { color: var(--primary); margin-bottom: 1.2rem; }
+        ul { list-style: none; padding: 0; }
         li {
             background: #f8f9fa;
             margin: 0.8rem 0;
@@ -68,12 +54,7 @@
             gap: 1rem;
             transition: all 0.3s;
         }
-
-        li:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 6px 15px rgba(0,0,0,0.1);
-        }
-
+        li:hover { transform: translateY(-4px); box-shadow: 0 6px 15px rgba(0,0,0,0.1); }
         button {
             padding: 0.6rem 1.2rem;
             border: none;
@@ -84,61 +65,43 @@
             transition: all 0.3s;
             font-weight: bold;
         }
-
-        button:hover {
-            background: var(--primary-light);
-            transform: scale(1.05);
-        }
-
-        .excluir {
-            background: var(--danger);
-        }
-
-        .excluir:hover {
-            background: #c0392b;
-        }
-
+        button:hover { background: var(--primary-light); transform: scale(1.05); }
+        .excluir { background: var(--danger); }
+        .excluir:hover { background: #c0392b; }
         footer {
             background: #1c2833;
             color: white;
             text-align: center;
             padding: 1.2rem;
             margin-top: 3rem;
-            position: relative;
         }
 
-        /* Animações gerais */
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(25px); }
-            to   { opacity: 1; transform: translateY(0); }
+        /* Campo para adicionar matéria personalizada */
+        .add-custom {
+            display: flex;
+            gap: 12px;
+            margin-top: 1.8rem;
+            flex-wrap: wrap;
+            align-items: center;
         }
-
-        .animate-fadeIn { animation: fadeInUp 0.9s ease-out forwards; }
-
-        /* Anotações */
-        #anotacoes-section input[type="text"],
-        #anotacoes-section textarea {
-            width: 100%;
-            padding: 0.9rem;
-            margin: 0.6rem 0;
+        .add-custom input {
+            flex: 1;
+            padding: 12px 16px;
+            font-size: 1rem;
             border: 1px solid #ccc;
             border-radius: 8px;
-            font-size: 1rem;
+            min-width: 220px;
+        }
+        .add-custom button {
+            background: var(--success);
+            padding: 12px 24px;
+            white-space: nowrap;
+        }
+        .add-custom button:hover {
+            background: #219653;
         }
 
-        #anotacoes-section input[type="text"]::placeholder {
-            color: #999;
-        }
-
-        #listaAnotacoes li {
-            background: #f0f7ff;
-            margin: 0.8rem 0;
-            padding: 1rem;
-            border-left: 5px solid var(--primary);
-            border-radius: 6px;
-        }
-
-        /* Calculadora menor e toggle */
+        /* Calculadora */
         .calculadora {
             position: fixed;
             right: 20px;
@@ -152,7 +115,6 @@
             transition: all 0.4s ease;
             z-index: 999;
         }
-
         .calculadora.minimizada {
             width: 60px;
             height: 60px;
@@ -160,7 +122,6 @@
             border-radius: 50%;
             overflow: hidden;
         }
-
         .toggle-calc {
             position: absolute;
             top: -12px;
@@ -177,7 +138,6 @@
             justify-content: center;
             box-shadow: 0 4px 12px rgba(0,0,0,0.3);
         }
-
         .calculadora.minimizada .toggle-calc {
             top: 50%;
             left: 50%;
@@ -185,10 +145,8 @@
             width: 100%;
             height: 100%;
             border: none;
-            border-radius: 50%;
             font-size: 1.8rem;
         }
-
         .calculadora input {
             width: 100%;
             margin-bottom: 8px;
@@ -200,7 +158,6 @@
             background: #ecf0f1;
             color: #2c3e50;
         }
-
         .calculadora button {
             width: 45px;
             height: 45px;
@@ -208,13 +165,27 @@
             font-size: 1.1rem;
             background: #34495e;
         }
+        .calculadora button:hover { background: var(--primary-light); }
 
-        .calculadora button:hover {
-            background: var(--primary-light);
+        /* Anotações */
+        #anotacoes-section input[type="text"],
+        #anotacoes-section textarea {
+            width: 100%;
+            padding: 0.9rem;
+            margin: 0.6rem 0;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 1rem;
         }
-
+        #anotacoes-section input[type="text"]::placeholder { color: #999; }
+        #listaAnotacoes li {
+            background: #f0f7ff;
+            margin: 0.8rem 0;
+            padding: 1rem;
+            border-left: 5px solid var(--primary);
+            border-radius: 6px;
+        }
         .botoes-resumo { text-align: right; margin-top: 1rem; }
-
         #mensagem-salvo {
             color: var(--success);
             font-weight: bold;
@@ -222,7 +193,6 @@
             opacity: 0;
             transition: opacity 0.8s;
         }
-
         img.materia-icon {
             border-radius: 8px;
             width: 55px;
@@ -247,6 +217,12 @@
         <li><img src="https://m.media-amazon.com/images/I/A1fliDrSOiL.jpg" alt="Física" class="materia-icon"> Física <button onclick="adicionarMateria('Física')">Colocar na mochila</button></li>
         <li><img src="https://m.media-amazon.com/images/I/71uc5gfZfdL._AC_UF1000,1000_QL80_.jpg" alt="Química" class="materia-icon"> Química <button onclick="adicionarMateria('Química')">Colocar na mochila</button></li>
     </ul>
+
+    <!-- Área para adicionar matéria personalizada -->
+    <div class="add-custom">
+        <input type="text" id="novaMateria" placeholder="Digite o nome da matéria que deseja adicionar...">
+        <button onclick="adicionarMateriaPersonalizada()">Adicionar na mochila</button>
+    </div>
 </section>
 
 <section id="mochila-section">
@@ -262,7 +238,6 @@
         <button onclick="salvarAnotacao()">Salvar Anotação</button>
         <span id="mensagem-salvo">Salvo com sucesso! ✓</span>
     </div>
-
     <h3 style="margin-top:2rem">Anotações salvas</h3>
     <ul id="listaAnotacoes"></ul>
 </section>
@@ -325,7 +300,6 @@ window.onload = function() {
     document.querySelectorAll('section').forEach((sec, i) => {
         setTimeout(() => sec.classList.add('visible'), 200 * i);
     });
-
     carregarMaterias();
     carregarAnotacoes();
     contarPerguntas();
@@ -338,11 +312,15 @@ function carregarMaterias() {
 }
 
 function adicionarMateria(nome) {
+    if (!nome || typeof nome !== 'string' || nome.trim() === '') return;
+
     let materias = JSON.parse(localStorage.getItem("materias")) || [];
-    if (!materias.includes(nome)) {
-        materias.push(nome);
+    const nomeLimpo = nome.trim();
+
+    if (!materias.includes(nomeLimpo)) {
+        materias.push(nomeLimpo);
         localStorage.setItem("materias", JSON.stringify(materias));
-        criarItemMochila(nome);
+        criarItemMochila(nomeLimpo);
     }
 }
 
@@ -359,25 +337,37 @@ function removerMateria(botao, nome) {
     localStorage.setItem("materias", JSON.stringify(materias));
 }
 
-// ──────────────── Anotações (agora com input texto livre) ────────────────
+// Função corrigida e reforçada para adicionar matéria personalizada
+function adicionarMateriaPersonalizada() {
+    const input = document.getElementById("novaMateria");
+    if (!input) return;
+
+    const nome = input.value.trim();
+
+    if (nome === "") {
+        alert("Digite o nome da matéria antes de adicionar!");
+        input.focus();
+        return;
+    }
+
+    adicionarMateria(nome);
+    input.value = "";
+    alert(`Matéria "${nome}" adicionada com sucesso na sua mochila!`);
+}
+
+// ──────────────── Anotações ────────────────
 function salvarAnotacao() {
     const materia = document.getElementById("materiaInput").value.trim();
     const texto = document.getElementById("anotacao").value.trim();
-
     if (!materia || !texto) {
         alert("Digite o nome da matéria e escreva algo!");
         return;
     }
-
     let anotacoes = JSON.parse(localStorage.getItem("anotacoes")) || {};
     if (!anotacoes[materia]) anotacoes[materia] = [];
     anotacoes[materia].push(texto);
     localStorage.setItem("anotacoes", JSON.stringify(anotacoes));
-
     document.getElementById("anotacao").value = "";
-    // opcional: limpar o input da matéria também?
-    // document.getElementById("materiaInput").value = "";
-
     mostrarMensagemSalvo();
     carregarAnotacoes();
 }
@@ -386,7 +376,6 @@ function carregarAnotacoes() {
     const lista = document.getElementById("listaAnotacoes");
     lista.innerHTML = "";
     const anotacoes = JSON.parse(localStorage.getItem("anotacoes")) || {};
-
     for (const [materia, textos] of Object.entries(anotacoes)) {
         textos.forEach(texto => {
             const li = document.createElement("li");
@@ -416,9 +405,7 @@ function verificar(input) {
     let respostaCorreta = pergunta.getAttribute('data-resposta').toLowerCase().trim();
     let respostaUser = input.value.toLowerCase().trim();
     let feedback = pergunta.querySelector('.feedback');
-
     if (!respostaUser) return;
-
     if (respostaUser === respostaCorreta) {
         feedback.textContent = '✔ Acertou!';
         feedback.className = 'feedback acertou';
