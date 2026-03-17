@@ -10,32 +10,32 @@
             --primary-light: #00c3ff;
             --danger: #e74c3c;
             --success: #27ae60;
-            --bg: linear-gradient(135deg, #dfe9f3, #ffffff);
         }
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body {
             font-family: Arial, Helvetica, sans-serif;
-            background: var(--bg);
             color: #333;
             min-height: 100vh;
             padding-bottom: 100px;
-            /* Cursor Minecraft crosshair transparente */
-            cursor: url('https://www.pngfind.com/pngs/m/690-6901416_transparent-minecraft-crosshair-minecraft-default-crosshair-png-png.png'), crosshair;
+            background: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=2073&auto=format&fit=crop') no-repeat center center fixed;
+            background-size: cover;
+            cursor: url('https://www.rw-designer.com/cursor-extern.php?id=150930'), crosshair;
         }
         header {
-            background: linear-gradient(90deg, #0f2027, #203a43, #2c5364);
+            background: linear-gradient(90deg, rgba(15,32,39,0.8), rgba(32,58,67,0.8), rgba(44,83,100,0.8));
             color: white;
             padding: 2.5rem 1rem;
             text-align: center;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+            backdrop-filter: blur(5px);
         }
         section {
             max-width: 920px;
             margin: 2.5rem auto;
-            background: white;
+            background: rgba(255,255,255,0.92);
             padding: 2rem;
             border-radius: 12px;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
             opacity: 0;
             transform: translateY(30px);
             transition: all 0.8s ease-out;
@@ -47,7 +47,7 @@
         h2 { color: var(--primary); margin-bottom: 1.2rem; }
         ul { list-style: none; padding: 0; }
         li {
-            background: #f8f9fa;
+            background: rgba(248,249,250,0.9);
             margin: 0.8rem 0;
             padding: 1rem;
             border-radius: 10px;
@@ -56,14 +56,14 @@
             gap: 1rem;
             transition: all 0.3s;
         }
-        li:hover { transform: translateY(-4px); box-shadow: 0 6px 15px rgba(0,0,0,0.1); }
+        li:hover { transform: translateY(-4px); box-shadow: 0 6px 15px rgba(0,0,0,0.15); }
         button {
             padding: 0.6rem 1.2rem;
             border: none;
             background: var(--primary);
             color: white;
             border-radius: 8px;
-            cursor: url('https://www.pngfind.com/pngs/m/690-6901416_transparent-minecraft-crosshair-minecraft-default-crosshair-png-png.png'), pointer;
+            cursor: url('https://www.rw-designer.com/cursor-extern.php?id=150930'), pointer;
             transition: all 0.3s;
             font-weight: bold;
         }
@@ -72,35 +72,17 @@
         .excluir { background: var(--danger); }
         .excluir:hover { background: #c0392b; }
         footer {
-            background: #1c2833;
+            background: rgba(28,40,51,0.9);
             color: white;
             text-align: center;
             padding: 1.2rem;
             margin-top: 3rem;
+            backdrop-filter: blur(5px);
         }
-        .add-custom {
-            display: flex;
-            gap: 12px;
-            margin-top: 1.8rem;
-            flex-wrap: wrap;
-            align-items: center;
-        }
-        .add-custom input {
-            flex: 1;
-            padding: 12px 16px;
-            font-size: 1rem;
-            border: 1px solid #ccc;
-            border-radius: 8px;
-            min-width: 220px;
-        }
-        .add-custom button {
-            background: var(--success);
-            padding: 12px 24px;
-            white-space: nowrap;
-        }
-        .add-custom button:hover {
-            background: #219653;
-        }
+        .add-custom { display: flex; gap: 12px; margin-top: 1.8rem; flex-wrap: wrap; align-items: center; }
+        .add-custom input { flex: 1; padding: 12px 16px; font-size: 1rem; border: 1px solid #ccc; border-radius: 8px; min-width: 220px; }
+        .add-custom button { background: var(--success); padding: 12px 24px; white-space: nowrap; }
+        .add-custom button:hover { background: #219653; }
         /* Calculadora */
         .calculadora {
             position: fixed;
@@ -132,7 +114,7 @@
             border-radius: 50%;
             border: 3px solid white;
             font-size: 1.3rem;
-            cursor: url('https://www.pngfind.com/pngs/m/690-6901416_transparent-minecraft-crosshair-minecraft-default-crosshair-png-png.png'), pointer;
+            cursor: url('https://www.rw-designer.com/cursor-extern.php?id=150930'), pointer;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -164,56 +146,18 @@
             margin: 3px;
             font-size: 1.1rem;
             background: #34495e;
-            cursor: url('https://www.pngfind.com/pngs/m/690-6901416_transparent-minecraft-crosshair-minecraft-default-crosshair-png-png.png'), pointer;
+            cursor: url('https://www.rw-designer.com/cursor-extern.php?id=150930'), pointer;
         }
-        .calculadora button:hover { background: var(--primary-light); }
-        /* Anotações */
-        #anotacoes-section input[type="text"],
-        #anotacoes-section textarea {
-            width: 100%;
-            padding: 0.9rem;
-            margin: 0.6rem 0;
-            border: 1px solid #ccc;
-            border-radius: 8px;
-            font-size: 1rem;
-        }
-        #anotacoes-section input[type="text"]::placeholder { color: #999; }
-        #listaAnotacoes li {
-            background: #f0f7ff;
-            margin: 0.8rem 0;
-            padding: 1rem;
-            border-left: 5px solid var(--primary);
-            border-radius: 6px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        /* Quiz */
-        .feedback {
-            margin-left: 15px;
-            font-weight: bold;
-            font-size: 1.1rem;
-        }
+        /* Anotações e Quiz */
+        #anotacoes-section input[type="text"], #anotacoes-section textarea { width: 100%; padding: 0.9rem; margin: 0.6rem 0; border: 1px solid #ccc; border-radius: 8px; font-size: 1rem; }
+        #listaAnotacoes li { background: #f0f7ff; margin: 0.8rem 0; padding: 1rem; border-left: 5px solid var(--primary); border-radius: 6px; display: flex; justify-content: space-between; align-items: center; }
+        .feedback { margin-left: 15px; font-weight: bold; font-size: 1.1rem; }
         .feedback.acertou { color: var(--success); }
         .feedback.errou { color: var(--danger); }
-        .correct-answer {
-            margin-left: 10px;
-            color: #27ae60;
-            font-style: italic;
-        }
-        /* Ícones animação */
-        img.materia-icon {
-            border-radius: 8px;
-            width: 55px;
-            height: 55px;
-            object-fit: cover;
-            transition: transform 0.4s ease, filter 0.3s;
-        }
-        img.materia-icon:hover {
-            transform: rotate(12deg) scale(1.25);
-            filter: brightness(1.15);
-        }
-        /* Aura Super Saiyan - centralizada e visível */
+        .correct-answer { margin-left: 10px; color: #27ae60; font-style: italic; }
+        img.materia-icon { border-radius: 8px; width: 55px; height: 55px; object-fit: cover; transition: transform 0.4s ease, filter 0.3s; }
+        img.materia-icon:hover { transform: rotate(12deg) scale(1.25); filter: brightness(1.15); }
+        /* Aura Super Saiyan */
         #goku-aura-container {
             position: fixed;
             inset: 0;
@@ -224,20 +168,18 @@
             pointer-events: none;
             opacity: 0;
             transition: opacity 1.2s ease;
-            background: rgba(0,0,0,0.2); /* Fundo leve para debug - pode remover */
+            background: rgba(0,0,0,0.3);
         }
-        #goku-aura-container.visible {
-            opacity: 1;
-        }
+        #goku-aura-container.visible { opacity: 1; }
         #goku-aura-container img {
-            width: 60vw;
-            max-width: 600px;
-            filter: drop-shadow(0 0 80px #ffeb3b) drop-shadow(0 0 150px #ff9800) brightness(1.4);
-            animation: auraPulse 1.8s infinite alternate ease-in-out;
+            width: 80vw;
+            max-width: 800px;
+            filter: drop-shadow(0 0 120px #ffeb3b) drop-shadow(0 0 200px #ff9800) brightness(1.6) contrast(1.2);
+            animation: auraPulse 1.4s infinite alternate ease-in-out;
         }
         @keyframes auraPulse {
-            0% { transform: scale(0.8) rotate(-8deg); opacity: 0.7; }
-            100% { transform: scale(1.3) rotate(8deg); opacity: 1; }
+            0% { transform: scale(0.7) rotate(-12deg); opacity: 0.5; }
+            100% { transform: scale(1.5) rotate(12deg); opacity: 1; }
         }
     </style>
 </head>
@@ -255,19 +197,17 @@
         <li><img src="https://static.preparaenem.com/2021/02/celula-vegetal.jpg" alt="Biologia" class="materia-icon"> Biologia <button onclick="adicionarMateria('Biologia')">Colocar na mochila</button></li>
         <li><img src="https://m.media-amazon.com/images/I/A1fliDrSOiL.jpg" alt="Física" class="materia-icon"> Física <button onclick="adicionarMateria('Física')">Colocar na mochila</button></li>
         <li><img src="https://m.media-amazon.com/images/I/71uc5gfZfdL._AC_UF1000,1000_QL80_.jpg" alt="Química" class="materia-icon"> Química <button onclick="adicionarMateria('Química')">Colocar na mochila</button></li>
-        
         <li><img src="https://picsum.photos/id/160/55/55" alt="AMC" class="materia-icon"> AMC - Arquitetura e Manutenção de Computadores <button onclick="adicionarMateria('AMC - Arquitetura e Manutenção de Computadores')">Colocar na mochila</button></li>
         <li><img src="https://picsum.photos/id/201/55/55" alt="POO-Java" class="materia-icon"> POO - Java <button onclick="adicionarMateria('POO - Java')">Colocar na mochila</button></li>
         <li><img src="https://picsum.photos/id/29/55/55" alt="Gestão de Tempo" class="materia-icon"> Gestão de Tempo <button onclick="adicionarMateria('Gestão de Tempo')">Colocar na mochila</button></li>
-        <!-- Aura Super Saiyan melhor imagem para HTML -->
-        <li><img src="https://www.pngall.com/wp-content/uploads/5/Super-Saiyan-Aura-PNG-Image.png" alt="HTML" class="materia-icon"> HTML <button onclick="adicionarMateria('HTML')">Colocar na mochila</button></li>
+        <!-- HTML com ícone de aura Super Saiyan -->
+        <li><img src="https://www.pngfind.com/pngs/m/692-6921153_super-saiyan-aura-png-transparent-png.png" alt="HTML" class="materia-icon"> HTML <button onclick="adicionarMateria('HTML')">Colocar na mochila</button></li>
         <li><img src="https://picsum.photos/id/251/55/55" alt="Programação Web" class="materia-icon"> Programação Web <button onclick="adicionarMateria('Programação Web')">Colocar na mochila</button></li>
         <li><img src="https://picsum.photos/id/318/55/55" alt="Sistemas Operacionais" class="materia-icon"> Sistemas Operacionais <button onclick="adicionarMateria('Sistemas Operacionais')">Colocar na mochila</button></li>
         <li><img src="https://picsum.photos/id/1015/55/55" alt="Robótica" class="materia-icon"> Noções de Robótica <button onclick="adicionarMateria('Noções de Robótica')">Colocar na mochila</button></li>
     </ul>
-    
     <div class="add-custom">
-        <input type="text" id="novaMateria" placeholder="Digite o nome da matéria que deseja adicionar...">
+        <input type="text" id="novaMateria" placeholder="Digite o nome da matéria...">
         <button onclick="adicionarMateriaPersonalizada()">Adicionar na mochila</button>
     </div>
 </section>
@@ -279,49 +219,26 @@
 
 <section id="anotacoes-section">
     <h2>📝 Anotações</h2>
-    <input type="text" id="materiaInput" placeholder="Digite o nome da matéria...">
-    <textarea id="anotacao" placeholder="Escreva aqui suas anotações..."></textarea>
+    <input type="text" id="materiaInput" placeholder="Nome da matéria...">
+    <textarea id="anotacao" placeholder="Suas anotações..."></textarea>
     <div class="botoes-resumo">
-        <button onclick="salvarAnotacao()">Salvar Anotação</button>
-        <span id="mensagem-salvo">Salvo com sucesso! ✓</span>
+        <button onclick="salvarAnotacao()">Salvar</button>
+        <span id="mensagem-salvo">Salvo! ✓</span>
     </div>
-    <h3 style="margin-top:2rem">Anotações salvas</h3>
+    <h3>Anotações salvas</h3>
     <ul id="listaAnotacoes"></ul>
 </section>
 
 <section id="quiz-section">
     <h2>🧠 Quiz Rápido</h2>
     <p id="placar">Placar: 0 acertos de 0 perguntas</p>
-    
-    <div class="pergunta" data-resposta="10">
-        4 + 6 = <input type="text" onkeypress="if(event.key==='Enter') verificar(this)">
-        <span class="feedback"></span>
-    </div>
-    <div class="pergunta" data-resposta="fotossíntese">
-        Processo que as plantas usam para produzir alimento: <input type="text" onkeypress="if(event.key==='Enter') verificar(this)">
-        <span class="feedback"></span>
-    </div>
-    <div class="pergunta" data-resposta="vegeta">
-        Qual é o nome do principal rival de Goku? <input type="text" onkeypress="if(event.key==='Enter') verificar(this)">
-        <span class="feedback"></span>
-    </div>
-    <div class="pergunta" data-resposta="super saiyan">
-        Qual transformação Goku usa pela primeira vez contra Freeza? <input type="text" onkeypress="if(event.key==='Enter') verificar(this)">
-        <span class="feedback"></span>
-    </div>
-    <div class="pergunta" data-resposta="gohan">
-        Qual é o nome do filho mais velho de Goku? <input type="text" onkeypress="if(event.key==='Enter') verificar(this)">
-        <span class="feedback"></span>
-    </div>
-    <div class="pergunta" data-resposta="beerus">
-        Em Dragon Ball Super, qual é o nome do Deus da Destruição do Universo 7? <input type="text" onkeypress="if(event.key==='Enter') verificar(this)">
-        <span class="feedback"></span>
-    </div>
-    <div class="pergunta" data-resposta="cell">
-        Qual vilão Goku derrota nos Cell Games? <input type="text" onkeypress="if(event.key==='Enter') verificar(this)">
-        <span class="feedback"></span>
-    </div>
-
+    <div class="pergunta" data-resposta="10">4 + 6 = <input type="text" onkeypress="if(event.key==='Enter') verificar(this)"><span class="feedback"></span></div>
+    <div class="pergunta" data-resposta="fotossíntese">Processo que as plantas usam para produzir alimento: <input type="text" onkeypress="if(event.key==='Enter') verificar(this)"><span class="feedback"></span></div>
+    <div class="pergunta" data-resposta="vegeta">Principal rival de Goku? <input type="text" onkeypress="if(event.key==='Enter') verificar(this)"><span class="feedback"></span></div>
+    <div class="pergunta" data-resposta="super saiyan">Transformação contra Freeza? <input type="text" onkeypress="if(event.key==='Enter') verificar(this)"><span class="feedback"></span></div>
+    <div class="pergunta" data-resposta="gohan">Filho mais velho de Goku? <input type="text" onkeypress="if(event.key==='Enter') verificar(this)"><span class="feedback"></span></div>
+    <div class="pergunta" data-resposta="beerus">Deus da Destruição Universo 7? <input type="text" onkeypress="if(event.key==='Enter') verificar(this)"><span class="feedback"></span></div>
+    <div class="pergunta" data-resposta="cell">Vilão dos Cell Games? <input type="text" onkeypress="if(event.key==='Enter') verificar(this)"><span class="feedback"></span></div>
     <button onclick="corrigirTodos()">Corrigir Todas</button>
     <p id="resultado"></p>
 </section>
@@ -330,16 +247,14 @@
     <p>© 2026 Mochila Digital • Feito para ajudar nos estudos 💙</p>
 </footer>
 
-<!-- Aura Super Saiyan -->
+<!-- Aura de Super Saiyan (grande, aparece ao adicionar HTML) -->
 <div id="goku-aura-container">
-    <img src="https://www.pngall.com/wp-content/uploads/5/Super-Saiyan-Aura-PNG-Image.png" alt="Super Saiyan Aura">
+    <img src="https://www.pngfind.com/pngs/m/692-6921153_super-saiyan-aura-png-transparent-png.png" alt="Super Saiyan Aura Goku">
 </div>
 
-<!-- Calculadora -->
 <div class="calculadora" id="calcContainer">
     <div class="toggle-calc" onclick="toggleCalculadora()">−</div>
     <input id="calcDisplay" readonly>
-    <!-- Botões da calculadora iguais ao original -->
     <div><button onclick="add('7')">7</button><button onclick="add('8')">8</button><button onclick="add('9')">9</button><button onclick="add('/')">÷</button></div>
     <div><button onclick="add('4')">4</button><button onclick="add('5')">5</button><button onclick="add('6')">6</button><button onclick="add('*')">×</button></div>
     <div><button onclick="add('1')">1</button><button onclick="add('2')">2</button><button onclick="add('3')">3</button><button onclick="add('-')">−</button></div>
@@ -347,23 +262,22 @@
 </div>
 
 <script>
-// Seu script original + correções
-window.onload = function() {
-    document.querySelectorAll('section').forEach((sec, i) => {
-        setTimeout(() => sec.classList.add('visible'), 200 * i);
-    });
+let totalPerguntas = 0;
+let acertos = 0;
+
+window.onload = () => {
+    document.querySelectorAll('section').forEach((sec, i) => setTimeout(() => sec.classList.add('visible'), 200 * i));
     carregarMaterias();
     carregarAnotacoes();
     contarPerguntas();
 };
 
 function carregarMaterias() {
-    const materias = JSON.parse(localStorage.getItem("materias")) || [];
-    materias.forEach(m => criarItemMochila(m));
+    (JSON.parse(localStorage.getItem("materias")) || []).forEach(criarItemMochila);
 }
 
 function adicionarMateria(nome) {
-    if (!nome || typeof nome !== 'string' || nome.trim() === '') return;
+    if (!nome?.trim()) return;
     let materias = JSON.parse(localStorage.getItem("materias")) || [];
     const nomeLimpo = nome.trim();
     if (!materias.includes(nomeLimpo)) {
@@ -371,37 +285,108 @@ function adicionarMateria(nome) {
         localStorage.setItem("materias", JSON.stringify(materias));
         criarItemMochila(nomeLimpo);
         if (nomeLimpo === "HTML") {
-            console.log("Aura do Super Saiyan ativada para HTML!");
+            console.log("Aura Super Saiyan ativada!");
             showGokuAura();
         }
     }
 }
 
-// ... (manter criarItemMochila, removerMateria, adicionarMateriaPersonalizada, salvarAnotacao, carregarAnotacoes, removerAnotacao, mostrarMensagemSalvo, quiz functions iguais)
+function criarItemMochila(nome) {
+    const li = document.createElement("li");
+    li.innerHTML = `${nome} <button class="excluir" onclick="removerMateria(this,'${nome.replace(/'/g,"\\'")}')">Remover</button>`;
+    document.getElementById("listaMaterias").appendChild(li);
+}
+
+function removerMateria(btn, nome) {
+    btn.parentElement.remove();
+    let materias = JSON.parse(localStorage.getItem("materias")) || [];
+    materias = materias.filter(m => m !== nome);
+    localStorage.setItem("materias", JSON.stringify(materias));
+}
+
+function adicionarMateriaPersonalizada() {
+    const input = document.getElementById("novaMateria");
+    const nome = input.value.trim();
+    if (!nome) return alert("Digite o nome da matéria!");
+    adicionarMateria(nome);
+    input.value = "";
+}
 
 function showGokuAura() {
-    const container = document.getElementById("goku-aura-container");
-    container.classList.add("visible");
+    const cont = document.getElementById("goku-aura-container");
+    if (!cont) return;
+    cont.classList.add("visible");
     setTimeout(() => {
-        container.style.opacity = "0";
+        cont.style.opacity = "0";
         setTimeout(() => {
-            container.classList.remove("visible");
-            container.style.opacity = "";
+            cont.classList.remove("visible");
+            cont.style.opacity = "";
         }, 1200);
     }, 5000);
 }
 
-// ... (quiz e calculadora iguais, mas adicione no verificar() se quiser mostrar resposta certa ao errar - como antes)
+// ... (o resto do script continua igual: anotações, quiz, calculadora)
+function salvarAnotacao() {
+    const mat = document.getElementById("materiaInput").value.trim();
+    const txt = document.getElementById("anotacao").value.trim();
+    if (!mat || !txt) return alert("Preencha matéria e anotação!");
+    let anots = JSON.parse(localStorage.getItem("anotacoes")) || {};
+    if (!anots[mat]) anots[mat] = [];
+    anots[mat].push(txt);
+    localStorage.setItem("anotacoes", JSON.stringify(anots));
+    document.getElementById("anotacao").value = "";
+    mostrarMensagemSalvo();
+    carregarAnotacoes();
+}
+
+function carregarAnotacoes() {
+    const lista = document.getElementById("listaAnotacoes");
+    lista.innerHTML = "";
+    const anots = JSON.parse(localStorage.getItem("anotacoes")) || {};
+    Object.entries(anots).forEach(([mat, textos]) => {
+        textos.forEach(txt => {
+            const li = document.createElement("li");
+            li.innerHTML = `<strong>${mat}:</strong> ${txt} <button class="excluir" onclick="removerAnotacao(this)">Remover</button>`;
+            li.dataset.materia = mat;
+            li.dataset.texto = txt;
+            lista.appendChild(li);
+        });
+    });
+}
+
+function removerAnotacao(btn) {
+    const li = btn.parentElement;
+    const mat = li.dataset.materia;
+    const txt = li.dataset.texto;
+    let anots = JSON.parse(localStorage.getItem("anotacoes")) || {};
+    if (anots[mat]) {
+        anots[mat] = anots[mat].filter(t => t !== txt);
+        if (!anots[mat].length) delete anots[mat];
+        localStorage.setItem("anotacoes", JSON.stringify(anots));
+    }
+    carregarAnotacoes();
+}
+
+function mostrarMensagemSalvo() {
+    const msg = document.getElementById("mensagem-salvo");
+    msg.style.opacity = "1";
+    setTimeout(() => msg.style.opacity = "0", 2200);
+}
+
+function contarPerguntas() {
+    totalPerguntas = document.querySelectorAll('.pergunta').length;
+    atualizarPlacar();
+}
 
 function verificar(input) {
-    let pergunta = input.parentElement;
-    let respostaCorreta = pergunta.getAttribute('data-resposta').toLowerCase().trim();
-    let respostaUser = input.value.toLowerCase().trim();
-    let feedback = pergunta.querySelector('.feedback');
-    let existing = pergunta.querySelector('.correct-answer');
+    const pergunta = input.parentElement;
+    const correta = pergunta.getAttribute('data-resposta').toLowerCase().trim();
+    const user = input.value.toLowerCase().trim();
+    const feedback = pergunta.querySelector('.feedback');
+    const existing = pergunta.querySelector('.correct-answer');
     if (existing) existing.remove();
-    if (!respostaUser) return;
-    if (respostaUser === respostaCorreta) {
+    if (!user) return;
+    if (user === correta) {
         feedback.textContent = '✔ Acertou!';
         feedback.className = 'feedback acertou';
         if (!pergunta.classList.contains('acertada')) {
@@ -414,12 +399,32 @@ function verificar(input) {
         feedback.className = 'feedback errou';
         const span = document.createElement('span');
         span.className = 'correct-answer';
-        span.textContent = ` (A certa é: ${pergunta.getAttribute('data-resposta')})`;
+        span.textContent = ` (Certa: ${pergunta.getAttribute('data-resposta')})`;
         pergunta.appendChild(span);
     }
 }
 
-// ... resto do script
+function corrigirTodos() {
+    document.querySelectorAll('.pergunta input').forEach(verificar);
+    document.getElementById("resultado").textContent = "Quiz corrigido!";
+}
+
+function atualizarPlacar() {
+    document.getElementById("placar").textContent = `Placar: ${acertos} acertos de ${totalPerguntas} perguntas`;
+}
+
+function toggleCalculadora() {
+    const calc = document.getElementById("calcContainer");
+    calc.classList.toggle("minimizada");
+    calc.querySelector(".toggle-calc").textContent = calc.classList.contains("minimizada") ? "+" : "−";
+}
+
+function add(valor) { document.getElementById("calcDisplay").value += valor; }
+function limpar() { document.getElementById("calcDisplay").value = ""; }
+function calcular() {
+    const display = document.getElementById("calcDisplay");
+    try { display.value = eval(display.value) || ""; } catch { display.value = "Erro"; }
+}
 </script>
 </body>
 </html>
