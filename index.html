@@ -19,8 +19,8 @@
             color: #333;
             min-height: 100vh;
             padding-bottom: 100px;
-            /* Cursor Minecraft (crosshair clássico) - PNG transparente */
-            cursor: url('https://www.vhv.rs/dpng/d/437-4370383_minecraft-arrow-transparent-cursor-minecraft-hd-png-download.png'), auto;
+            /* Cursor Minecraft crosshair transparente */
+            cursor: url('https://www.pngfind.com/pngs/m/690-6901416_transparent-minecraft-crosshair-minecraft-default-crosshair-png-png.png'), crosshair;
         }
         header {
             background: linear-gradient(90deg, #0f2027, #203a43, #2c5364);
@@ -63,7 +63,9 @@
             background: var(--primary);
             color: white;
             border-radius: 8px;
-            cursor: url('https://www.vhv.rs/dpng/d/437-4370383_minecraft-arrow-transparent-cursor-minecraft-hd-png-download.png'), pointer;
+            cursor: url('https://www.pngfind.com/pngs/m/690-6901416_transparent-minecraft-crosshair-minecraft-default-crosshair-png-png.png'), pointer;
+            transition: all 0.3s;
+            font-weight: bold;
         }
         button:hover { background: var(--primary-light); transform: scale(1.05); }
         button:active { transform: scale(0.95); }
@@ -76,7 +78,6 @@
             padding: 1.2rem;
             margin-top: 3rem;
         }
-        /* Campo para adicionar matéria personalizada */
         .add-custom {
             display: flex;
             gap: 12px;
@@ -131,11 +132,20 @@
             border-radius: 50%;
             border: 3px solid white;
             font-size: 1.3rem;
-            cursor: url('https://www.vhv.rs/dpng/d/437-4370383_minecraft-arrow-transparent-cursor-minecraft-hd-png-download.png'), pointer;
+            cursor: url('https://www.pngfind.com/pngs/m/690-6901416_transparent-minecraft-crosshair-minecraft-default-crosshair-png-png.png'), pointer;
             display: flex;
             align-items: center;
             justify-content: center;
             box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        }
+        .calculadora.minimizada .toggle-calc {
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100%;
+            height: 100%;
+            border: none;
+            font-size: 1.8rem;
         }
         .calculadora input {
             width: 100%;
@@ -154,8 +164,9 @@
             margin: 3px;
             font-size: 1.1rem;
             background: #34495e;
-            cursor: url('https://www.vhv.rs/dpng/d/437-4370383_minecraft-arrow-transparent-cursor-minecraft-hd-png-download.png'), pointer;
+            cursor: url('https://www.pngfind.com/pngs/m/690-6901416_transparent-minecraft-crosshair-minecraft-default-crosshair-png-png.png'), pointer;
         }
+        .calculadora button:hover { background: var(--primary-light); }
         /* Anotações */
         #anotacoes-section input[type="text"],
         #anotacoes-section textarea {
@@ -166,6 +177,7 @@
             border-radius: 8px;
             font-size: 1rem;
         }
+        #anotacoes-section input[type="text"]::placeholder { color: #999; }
         #listaAnotacoes li {
             background: #f0f7ff;
             margin: 0.8rem 0;
@@ -189,7 +201,7 @@
             color: #27ae60;
             font-style: italic;
         }
-        /* Ícones com animação */
+        /* Ícones animação */
         img.materia-icon {
             border-radius: 8px;
             width: 55px;
@@ -201,28 +213,31 @@
             transform: rotate(12deg) scale(1.25);
             filter: brightness(1.15);
         }
-        /* Aura Super Saiyan (melhorada) */
+        /* Aura Super Saiyan - centralizada e visível */
         #goku-aura-container {
             position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             z-index: 10000;
             pointer-events: none;
-            display: none;
-            text-align: center;
             opacity: 0;
-            transition: opacity 1s;
+            transition: opacity 1.2s ease;
+            background: rgba(0,0,0,0.2); /* Fundo leve para debug - pode remover */
+        }
+        #goku-aura-container.visible {
+            opacity: 1;
         }
         #goku-aura-container img {
-            width: 500px;
-            max-width: 90vw;
-            filter: drop-shadow(0 0 60px #ffeb3b) drop-shadow(0 0 120px #ff9800) brightness(1.3);
-            animation: auraPulse 1.5s infinite alternate ease-in-out;
+            width: 60vw;
+            max-width: 600px;
+            filter: drop-shadow(0 0 80px #ffeb3b) drop-shadow(0 0 150px #ff9800) brightness(1.4);
+            animation: auraPulse 1.8s infinite alternate ease-in-out;
         }
         @keyframes auraPulse {
-            0% { transform: scale(0.9) rotate(-5deg); opacity: 0.7; }
-            100% { transform: scale(1.2) rotate(5deg); opacity: 1; }
+            0% { transform: scale(0.8) rotate(-8deg); opacity: 0.7; }
+            100% { transform: scale(1.3) rotate(8deg); opacity: 1; }
         }
     </style>
 </head>
@@ -235,19 +250,17 @@
 <section id="materias-section">
     <h2>📚 Matérias Disponíveis</h2>
     <ul id="materiasDisponiveis">
-        <!-- Matérias originais -->
         <li><img src="https://pnld.smeducacao.com.br/wp-content/uploads/2023/05/GA_PORTUGUES2.png" alt="Português" class="materia-icon"> Português <button onclick="adicionarMateria('Português')">Colocar na mochila</button></li>
         <li><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhRjrQJhAnFu2f1Cf5KnEc_RCc9mu0ummnhrkfXn43HUFszsrl7IyDmXCJP7EIbQolhGfLV_VSA6Xwtzd07-dbhLIttyjkIh3N1029afzxOTNHI2KTP9PEdNC7F00-b0V_42cbuLDnvF_4/s1600/Capa-caderno-matem%C3%A1tica-imprimir-espa%C3%A7oeducar+(2).jpg" alt="Matemática" class="materia-icon"> Matemática <button onclick="adicionarMateria('Matemática')">Colocar na mochila</button></li>
         <li><img src="https://static.preparaenem.com/2021/02/celula-vegetal.jpg" alt="Biologia" class="materia-icon"> Biologia <button onclick="adicionarMateria('Biologia')">Colocar na mochila</button></li>
         <li><img src="https://m.media-amazon.com/images/I/A1fliDrSOiL.jpg" alt="Física" class="materia-icon"> Física <button onclick="adicionarMateria('Física')">Colocar na mochila</button></li>
         <li><img src="https://m.media-amazon.com/images/I/71uc5gfZfdL._AC_UF1000,1000_QL80_.jpg" alt="Química" class="materia-icon"> Química <button onclick="adicionarMateria('Química')">Colocar na mochila</button></li>
         
-        <!-- NOVAS MATÉRIAS -->
         <li><img src="https://picsum.photos/id/160/55/55" alt="AMC" class="materia-icon"> AMC - Arquitetura e Manutenção de Computadores <button onclick="adicionarMateria('AMC - Arquitetura e Manutenção de Computadores')">Colocar na mochila</button></li>
         <li><img src="https://picsum.photos/id/201/55/55" alt="POO-Java" class="materia-icon"> POO - Java <button onclick="adicionarMateria('POO - Java')">Colocar na mochila</button></li>
         <li><img src="https://picsum.photos/id/29/55/55" alt="Gestão de Tempo" class="materia-icon"> Gestão de Tempo <button onclick="adicionarMateria('Gestão de Tempo')">Colocar na mochila</button></li>
-        <!-- Imagem melhor para HTML: aura Super Saiyan visível -->
-        <li><img src="https://www.pngfind.com/pngs/m/692-6921153_super-saiyan-aura-png-transparent-png.png" alt="HTML" class="materia-icon"> HTML <button onclick="adicionarMateria('HTML')">Colocar na mochila</button></li>
+        <!-- Aura Super Saiyan melhor imagem para HTML -->
+        <li><img src="https://www.pngall.com/wp-content/uploads/5/Super-Saiyan-Aura-PNG-Image.png" alt="HTML" class="materia-icon"> HTML <button onclick="adicionarMateria('HTML')">Colocar na mochila</button></li>
         <li><img src="https://picsum.photos/id/251/55/55" alt="Programação Web" class="materia-icon"> Programação Web <button onclick="adicionarMateria('Programação Web')">Colocar na mochila</button></li>
         <li><img src="https://picsum.photos/id/318/55/55" alt="Sistemas Operacionais" class="materia-icon"> Sistemas Operacionais <button onclick="adicionarMateria('Sistemas Operacionais')">Colocar na mochila</button></li>
         <li><img src="https://picsum.photos/id/1015/55/55" alt="Robótica" class="materia-icon"> Noções de Robótica <button onclick="adicionarMateria('Noções de Robótica')">Colocar na mochila</button></li>
@@ -259,34 +272,135 @@
     </div>
 </section>
 
-<!-- Restante do HTML igual (mochila, anotações, quiz, footer, aura container, calculadora) -->
+<section id="mochila-section">
+    <h2>🎒 Minha Mochila</h2>
+    <ul id="listaMaterias"></ul>
+</section>
+
+<section id="anotacoes-section">
+    <h2>📝 Anotações</h2>
+    <input type="text" id="materiaInput" placeholder="Digite o nome da matéria...">
+    <textarea id="anotacao" placeholder="Escreva aqui suas anotações..."></textarea>
+    <div class="botoes-resumo">
+        <button onclick="salvarAnotacao()">Salvar Anotação</button>
+        <span id="mensagem-salvo">Salvo com sucesso! ✓</span>
+    </div>
+    <h3 style="margin-top:2rem">Anotações salvas</h3>
+    <ul id="listaAnotacoes"></ul>
+</section>
+
+<section id="quiz-section">
+    <h2>🧠 Quiz Rápido</h2>
+    <p id="placar">Placar: 0 acertos de 0 perguntas</p>
+    
+    <div class="pergunta" data-resposta="10">
+        4 + 6 = <input type="text" onkeypress="if(event.key==='Enter') verificar(this)">
+        <span class="feedback"></span>
+    </div>
+    <div class="pergunta" data-resposta="fotossíntese">
+        Processo que as plantas usam para produzir alimento: <input type="text" onkeypress="if(event.key==='Enter') verificar(this)">
+        <span class="feedback"></span>
+    </div>
+    <div class="pergunta" data-resposta="vegeta">
+        Qual é o nome do principal rival de Goku? <input type="text" onkeypress="if(event.key==='Enter') verificar(this)">
+        <span class="feedback"></span>
+    </div>
+    <div class="pergunta" data-resposta="super saiyan">
+        Qual transformação Goku usa pela primeira vez contra Freeza? <input type="text" onkeypress="if(event.key==='Enter') verificar(this)">
+        <span class="feedback"></span>
+    </div>
+    <div class="pergunta" data-resposta="gohan">
+        Qual é o nome do filho mais velho de Goku? <input type="text" onkeypress="if(event.key==='Enter') verificar(this)">
+        <span class="feedback"></span>
+    </div>
+    <div class="pergunta" data-resposta="beerus">
+        Em Dragon Ball Super, qual é o nome do Deus da Destruição do Universo 7? <input type="text" onkeypress="if(event.key==='Enter') verificar(this)">
+        <span class="feedback"></span>
+    </div>
+    <div class="pergunta" data-resposta="cell">
+        Qual vilão Goku derrota nos Cell Games? <input type="text" onkeypress="if(event.key==='Enter') verificar(this)">
+        <span class="feedback"></span>
+    </div>
+
+    <button onclick="corrigirTodos()">Corrigir Todas</button>
+    <p id="resultado"></p>
+</section>
+
+<footer>
+    <p>© 2026 Mochila Digital • Feito para ajudar nos estudos 💙</p>
+</footer>
 
 <!-- Aura Super Saiyan -->
 <div id="goku-aura-container">
-    <img src="https://www.pngfind.com/pngs/m/692-6921153_super-saiyan-aura-png-transparent-png.png" alt="Super Saiyan Aura">
+    <img src="https://www.pngall.com/wp-content/uploads/5/Super-Saiyan-Aura-PNG-Image.png" alt="Super Saiyan Aura">
 </div>
 
-<!-- Calculadora e outros elementos iguais -->
+<!-- Calculadora -->
+<div class="calculadora" id="calcContainer">
+    <div class="toggle-calc" onclick="toggleCalculadora()">−</div>
+    <input id="calcDisplay" readonly>
+    <!-- Botões da calculadora iguais ao original -->
+    <div><button onclick="add('7')">7</button><button onclick="add('8')">8</button><button onclick="add('9')">9</button><button onclick="add('/')">÷</button></div>
+    <div><button onclick="add('4')">4</button><button onclick="add('5')">5</button><button onclick="add('6')">6</button><button onclick="add('*')">×</button></div>
+    <div><button onclick="add('1')">1</button><button onclick="add('2')">2</button><button onclick="add('3')">3</button><button onclick="add('-')">−</button></div>
+    <div><button onclick="add('0')">0</button><button onclick="limpar()">C</button><button onclick="calcular()">=</button><button onclick="add('+')">+</button></div>
+</div>
 
 <script>
-// ... (manter todas as funções anteriores)
+// Seu script original + correções
+window.onload = function() {
+    document.querySelectorAll('section').forEach((sec, i) => {
+        setTimeout(() => sec.classList.add('visible'), 200 * i);
+    });
+    carregarMaterias();
+    carregarAnotacoes();
+    contarPerguntas();
+};
 
-// Atualização no verificar() para mostrar resposta certa ao errar
+function carregarMaterias() {
+    const materias = JSON.parse(localStorage.getItem("materias")) || [];
+    materias.forEach(m => criarItemMochila(m));
+}
+
+function adicionarMateria(nome) {
+    if (!nome || typeof nome !== 'string' || nome.trim() === '') return;
+    let materias = JSON.parse(localStorage.getItem("materias")) || [];
+    const nomeLimpo = nome.trim();
+    if (!materias.includes(nomeLimpo)) {
+        materias.push(nomeLimpo);
+        localStorage.setItem("materias", JSON.stringify(materias));
+        criarItemMochila(nomeLimpo);
+        if (nomeLimpo === "HTML") {
+            console.log("Aura do Super Saiyan ativada para HTML!");
+            showGokuAura();
+        }
+    }
+}
+
+// ... (manter criarItemMochila, removerMateria, adicionarMateriaPersonalizada, salvarAnotacao, carregarAnotacoes, removerAnotacao, mostrarMensagemSalvo, quiz functions iguais)
+
+function showGokuAura() {
+    const container = document.getElementById("goku-aura-container");
+    container.classList.add("visible");
+    setTimeout(() => {
+        container.style.opacity = "0";
+        setTimeout(() => {
+            container.classList.remove("visible");
+            container.style.opacity = "";
+        }, 1200);
+    }, 5000);
+}
+
+// ... (quiz e calculadora iguais, mas adicione no verificar() se quiser mostrar resposta certa ao errar - como antes)
+
 function verificar(input) {
     let pergunta = input.parentElement;
     let respostaCorreta = pergunta.getAttribute('data-resposta').toLowerCase().trim();
     let respostaUser = input.value.toLowerCase().trim();
     let feedback = pergunta.querySelector('.feedback');
-    
-    // Limpa resposta correta anterior se existir
-    let existingCorrect = pergunta.querySelector('.correct-answer');
-    if (existingCorrect) existingCorrect.remove();
-
-    if (!respostaUser) {
-        feedback.textContent = '';
-        return;
-    }
-
+    let existing = pergunta.querySelector('.correct-answer');
+    if (existing) existing.remove();
+    if (!respostaUser) return;
     if (respostaUser === respostaCorreta) {
         feedback.textContent = '✔ Acertou!';
         feedback.className = 'feedback acertou';
@@ -298,26 +412,14 @@ function verificar(input) {
     } else {
         feedback.textContent = '✘ Errou!';
         feedback.className = 'feedback errou';
-        
-        // Mostra a resposta correta
-        const correctSpan = document.createElement('span');
-        correctSpan.className = 'correct-answer';
-        correctSpan.textContent = `(A certa é: ${pergunta.getAttribute('data-resposta')})`;
-        pergunta.appendChild(correctSpan);
+        const span = document.createElement('span');
+        span.className = 'correct-answer';
+        span.textContent = ` (A certa é: ${pergunta.getAttribute('data-resposta')})`;
+        pergunta.appendChild(span);
     }
 }
 
-// Na função corrigirTodos(), chama verificar em todos
-function corrigirTodos() {
-    document.querySelectorAll('.pergunta input').forEach(input => {
-        verificar(input);  // Vai mostrar erros com resposta certa
-    });
-    document.getElementById("resultado").innerHTML = "Quiz corrigido! Continue praticando!";
-}
-
-// showGokuAura() já está melhorado no CSS
-
-// ... resto do script igual
+// ... resto do script
 </script>
 </body>
 </html>
