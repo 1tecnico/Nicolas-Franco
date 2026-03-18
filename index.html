@@ -20,6 +20,24 @@
             background: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=2073&auto=format&fit=crop') no-repeat center center fixed;
             background-size: cover;
             cursor: url('https://www.rw-designer.com/cursor-extern.php?id=150930'), crosshair;
+            transition: transform 0.1s; /* ajuda no tremor */
+        }
+        /* Classe para tremor na tela inteira */
+        body.tremendo {
+            animation: tremor 0.7s ease-in-out;
+        }
+        @keyframes tremor {
+            0% { transform: translate(0, 0) rotate(0deg); }
+            10% { transform: translate(-12px, -8px) rotate(-1deg); }
+            20% { transform: translate(10px, -6px) rotate(1deg); }
+            30% { transform: translate(-8px, 10px) rotate(-1deg); }
+            40% { transform: translate(8px, -8px) rotate(1deg); }
+            50% { transform: translate(-6px, 6px) rotate(-0.5deg); }
+            60% { transform: translate(6px, -4px) rotate(0.5deg); }
+            70% { transform: translate(-4px, 4px) rotate(-0.5deg); }
+            80% { transform: translate(4px, -2px) rotate(0.5deg); }
+            90% { transform: translate(-2px, 2px) rotate(-0.2deg); }
+            100% { transform: translate(0, 0) rotate(0deg); }
         }
         header {
             background: linear-gradient(90deg, rgba(15,32,39,0.8), rgba(32,58,67,0.8), rgba(44,83,100,0.8));
@@ -157,7 +175,7 @@
         .correct-answer { margin-left: 10px; color: #27ae60; font-style: italic; }
         img.materia-icon { border-radius: 8px; width: 55px; height: 55px; object-fit: cover; transition: transform 0.4s ease, filter 0.3s; }
         img.materia-icon:hover { transform: rotate(12deg) scale(1.25); filter: brightness(1.15); }
-        /* Aura Super Saiyan */
+        /* Aura Super Saiyan + Goku maior */
         #goku-aura-container {
             position: fixed;
             inset: 0;
@@ -173,13 +191,13 @@
         #goku-aura-container.visible { opacity: 1; }
         #goku-aura-container img {
             width: 80vw;
-            max-width: 800px;
-            filter: drop-shadow(0 0 120px #ffeb3b) drop-shadow(0 0 200px #ff9800) brightness(1.6) contrast(1.2);
+            max-width: 720px;
+            filter: drop-shadow(0 0 120px #ffeb3b) drop-shadow(0 0 200px #ff9800) brightness(1.5) contrast(1.2);
             animation: auraPulse 1.4s infinite alternate ease-in-out;
         }
         @keyframes auraPulse {
-            0% { transform: scale(0.7) rotate(-12deg); opacity: 0.5; }
-            100% { transform: scale(1.5) rotate(12deg); opacity: 1; }
+            0% { transform: scale(0.8) rotate(-8deg); opacity: 0.6; }
+            100% { transform: scale(1.35) rotate(8deg); opacity: 1; }
         }
     </style>
 </head>
@@ -188,7 +206,6 @@
     <h1>🎒 Mochila Digital</h1>
     <p>Organize suas matérias, anotações e pratique!</p>
 </header>
-
 <section id="materias-section">
     <h2>📚 Matérias Disponíveis</h2>
     <ul id="materiasDisponiveis">
@@ -200,8 +217,11 @@
         <li><img src="https://picsum.photos/id/160/55/55" alt="AMC" class="materia-icon"> AMC - Arquitetura e Manutenção de Computadores <button onclick="adicionarMateria('AMC - Arquitetura e Manutenção de Computadores')">Colocar na mochila</button></li>
         <li><img src="https://picsum.photos/id/201/55/55" alt="POO-Java" class="materia-icon"> POO - Java <button onclick="adicionarMateria('POO - Java')">Colocar na mochila</button></li>
         <li><img src="https://picsum.photos/id/29/55/55" alt="Gestão de Tempo" class="materia-icon"> Gestão de Tempo <button onclick="adicionarMateria('Gestão de Tempo')">Colocar na mochila</button></li>
-        <!-- HTML com ícone de aura Super Saiyan -->
-        <li><img src="https://www.pngfind.com/pngs/m/692-6921153_super-saiyan-aura-png-transparent-png.png" alt="HTML" class="materia-icon"> HTML <button onclick="adicionarMateria('HTML')">Colocar na mochila</button></li>
+        <!-- HTML com imagem do Goku (ícone pequeno) -->
+        <li>
+            <img src="https://www.pngall.com/wp-content/uploads/5/Goku-Super-Saiyan-PNG-Image.png" alt="HTML - Goku" class="materia-icon">
+            HTML <button onclick="adicionarMateria('HTML')">Colocar na mochila</button>
+        </li>
         <li><img src="https://picsum.photos/id/251/55/55" alt="Programação Web" class="materia-icon"> Programação Web <button onclick="adicionarMateria('Programação Web')">Colocar na mochila</button></li>
         <li><img src="https://picsum.photos/id/318/55/55" alt="Sistemas Operacionais" class="materia-icon"> Sistemas Operacionais <button onclick="adicionarMateria('Sistemas Operacionais')">Colocar na mochila</button></li>
         <li><img src="https://picsum.photos/id/1015/55/55" alt="Robótica" class="materia-icon"> Noções de Robótica <button onclick="adicionarMateria('Noções de Robótica')">Colocar na mochila</button></li>
@@ -211,12 +231,10 @@
         <button onclick="adicionarMateriaPersonalizada()">Adicionar na mochila</button>
     </div>
 </section>
-
 <section id="mochila-section">
     <h2>🎒 Minha Mochila</h2>
     <ul id="listaMaterias"></ul>
 </section>
-
 <section id="anotacoes-section">
     <h2>📝 Anotações</h2>
     <input type="text" id="materiaInput" placeholder="Nome da matéria...">
@@ -228,7 +246,6 @@
     <h3>Anotações salvas</h3>
     <ul id="listaAnotacoes"></ul>
 </section>
-
 <section id="quiz-section">
     <h2>🧠 Quiz Rápido</h2>
     <p id="placar">Placar: 0 acertos de 0 perguntas</p>
@@ -242,14 +259,13 @@
     <button onclick="corrigirTodos()">Corrigir Todas</button>
     <p id="resultado"></p>
 </section>
-
 <footer>
     <p>© 2026 Mochila Digital • Feito para ajudar nos estudos 💙</p>
 </footer>
 
-<!-- Aura de Super Saiyan (grande, aparece ao adicionar HTML) -->
+<!-- Goku Super Saiyan + Aura (aparece grande quando adiciona HTML) -->
 <div id="goku-aura-container">
-    <img src="https://www.pngfind.com/pngs/m/692-6921153_super-saiyan-aura-png-transparent-png.png" alt="Super Saiyan Aura Goku">
+    <img src="https://www.pngall.com/wp-content/uploads/5/Goku-Super-Saiyan-PNG-Image.png" alt="Goku Super Saiyan">
 </div>
 
 <div class="calculadora" id="calcContainer">
@@ -284,9 +300,10 @@ function adicionarMateria(nome) {
         materias.push(nomeLimpo);
         localStorage.setItem("materias", JSON.stringify(materias));
         criarItemMochila(nomeLimpo);
+        
         if (nomeLimpo === "HTML") {
-            console.log("Aura Super Saiyan ativada!");
-            showGokuAura();
+            console.log("Super Saiyan ativado! Kamehamehaaaa!");
+            showGokuAuraAndShake();
         }
     }
 }
@@ -312,17 +329,23 @@ function adicionarMateriaPersonalizada() {
     input.value = "";
 }
 
-function showGokuAura() {
+function showGokuAuraAndShake() {
+    // Tremor na tela inteira
+    document.body.classList.add("tremendo");
+    setTimeout(() => document.body.classList.remove("tremendo"), 1200);
+
+    // Mostra Goku + aura
     const cont = document.getElementById("goku-aura-container");
     if (!cont) return;
     cont.classList.add("visible");
+    
     setTimeout(() => {
         cont.style.opacity = "0";
         setTimeout(() => {
             cont.classList.remove("visible");
             cont.style.opacity = "";
-        }, 1200);
-    }, 5000);
+        }, 1400);
+    }, 4800); // dura ~6 segundos no total
 }
 
 // ... (o resto do script continua igual: anotações, quiz, calculadora)
